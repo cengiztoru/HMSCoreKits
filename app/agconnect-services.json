@@ -1,0 +1,47 @@
+{
+  "agcgw_all": {
+    "CN": "connect-drcn.dbankcloud.cn",
+    "CN_back": "connect-drcn.hispace.hicloud.com",
+    "DE": "connect-dre.dbankcloud.cn",
+    "DE_back": "connect-dre.hispace.hicloud.com",
+    "RU": "connect-drru.dbankcloud.cn",
+    "RU_back": "connect-drru.hispace.hicloud.com",
+    "SG": "connect-dra.dbankcloud.cn",
+    "SG_back": "connect-dra.hispace.hicloud.com"
+  },
+  "client": {
+    "cp_id": "5190090000029136797",
+    "product_id": "737518067793632309",
+    "client_id": "740567375115470016",
+    "client_secret": "DCE9DAFBD31D7D56209888C46A6EAC5C85A63BEB4232EF19161A189291CB9032",
+    "project_id": "737518067793632309",
+    "app_id": "104846955",
+    "api_key": "CwEAAAAA5M0C+4hd+/6F+2xJDkBGRXjT0uAHOrpRkjFtWiuenZv21buG1FqjZ9D+9XiQN+q+QB+G85DE0NFLB3dOllpqaBzRqaw=",
+    "package_name": "com.cengiztoru.hmscorekits"
+  },
+  "oauth_client": {
+    "client_id": "104846955",
+    "client_type": 1
+  },
+  "app_info": {
+    "app_id": "104846955",
+    "package_name": "com.cengiztoru.hmscorekits"
+  },
+  "configuration_version": "3.0",
+  "appInfos": [
+    {
+      "package_name": "com.cengiztoru.hmscorekits",
+      "client": {
+        "app_id": "104846955"
+      },
+      "app_info": {
+        "package_name": "com.cengiztoru.hmscorekits",
+        "app_id": "104846955"
+      },
+      "oauth_client": {
+        "client_type": 1,
+        "client_id": "104846955"
+      }
+    }
+  ]
+}

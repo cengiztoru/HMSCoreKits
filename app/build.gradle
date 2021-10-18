@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.huawei.agconnect' // HUAWEI agconnect Gradle plugin
 }
 
 android {
