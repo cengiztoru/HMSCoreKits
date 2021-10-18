@@ -1,9 +1,10 @@
-package com.cengiztoru.hmscorekits
+package com.cengiztoru.hmscorekits.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivityMainBinding
-import com.cengiztoru.hmscorekits.utils.extensions.showToast
+import com.cengiztoru.hmscorekits.ui.AccountKitActivity
+import com.cengiztoru.hmscorekits.utils.extensions.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,8 +24,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        mBinding.btnMainTest.setOnClickListener {
-            showToast("Main Activity Test Button Clicked")
+        mBinding.btnAccountKit.setOnClickListener {
+            startActivity<AccountKitActivity>()
         }
     }
 }
