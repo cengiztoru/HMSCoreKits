@@ -1,4 +1,4 @@
-package com.cengiztoru.hmscorekits.ui
+package com.cengiztoru.hmscorekits.ui.account_kit
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

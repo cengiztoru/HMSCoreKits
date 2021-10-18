@@ -3,7 +3,7 @@ package com.cengiztoru.hmscorekits.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivityMainBinding
-import com.cengiztoru.hmscorekits.ui.AccountKitActivity
+import com.cengiztoru.hmscorekits.ui.account_kit.AccountKitActivity
 import com.cengiztoru.hmscorekits.utils.extensions.startActivity
 
 class MainActivity : AppCompatActivity() {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ui.AccountKitActivity">
+    tools:context=".ui.account_kit.AccountKitActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_account_signin"
