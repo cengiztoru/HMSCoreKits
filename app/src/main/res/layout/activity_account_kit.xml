@@ -13,10 +13,10 @@
         style="@style/ButtonStyle"
         android:text="@string/sign_in" />
 
-    <Button
-        android:id="@+id/btn_account_signin_code"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_account_signin_authorization_code"
         style="@style/ButtonStyle"
-        android:text="@string/revokeAccess" />
+        android:text="@string/signin_authorization_code" />
 
     <Button
         android:id="@+id/btn_account_silent_signin"

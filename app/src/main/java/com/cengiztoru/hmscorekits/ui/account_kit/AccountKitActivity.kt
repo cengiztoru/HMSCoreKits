@@ -60,6 +60,38 @@ class AccountKitActivity : AppCompatActivity() {
 
 //endregion
 
+//region signInAuthorizationCode
+    /**** For security reasons, the operation of changing the code to an AT must be performed on your server. The code is only an example and cannot be run.  */
+    /**Based on the authorization code, your app obtains the access token, refresh token, and ID token from the Account Kit server.*/
+    private var singInAuthorizationCodeResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val authAccountTask = AccountAuthManager.parseAuthResultFromIntent(result.data)
+                if (authAccountTask.isSuccessful) {
+                    val authAccount = authAccountTask.result
+                    printMessage("SignIn get auth code success \n\nServerAuthCode:  ${authAccount.authorizationCode}")
+                    Log.i(TAG, "signIn get code success.")
+                    Log.i(TAG, "ServerAuthCode: " + authAccount.authorizationCode)
+                } else {
+                    Log.e(
+                        TAG,
+                        "signIn get code failed: " + (authAccountTask.exception as ApiException).statusCode
+                    )
+                }
+            }
+        }
+
+    private fun signInWithAuthorizationCode() {
+        mAuthParam = AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
+            .setProfile()
+            .setAuthorizationCode()
+            .createParams()
+        mAuthManager = AccountAuthManager.getService(this@AccountKitActivity, mAuthParam)
+        singInAuthorizationCodeResultLauncher.launch(mAuthManager?.signInIntent)
+    }
+//endregion
+
+
 //region common functions
 
     private fun inflateViews() {
@@ -70,6 +102,10 @@ class AccountKitActivity : AppCompatActivity() {
     private fun setListeners() {
         mBinding.btnAccountSignin.setOnClickListener {
             signIn()
+        }
+
+        mBinding.btnAccountSigninAuthorizationCode.setOnClickListener {
+            signInWithAuthorizationCode()
         }
     }
 

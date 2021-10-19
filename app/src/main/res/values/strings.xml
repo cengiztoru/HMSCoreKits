@@ -2,7 +2,7 @@
     <string name="app_name">HMS Core Kits Collection</string>
     <string name="sign_in">SignIn With Huawei ID</string>
     <string name="sign_out">SignOut</string>
-    <string name="revokeAccess">Authorization Code Mode SigIn</string>
+    <string name="signin_authorization_code">SignIn and Get Authorization Code</string>
     <string name="silent_sign_in">Silent SignIn</string>
     <string name="cancel_authorization">Cancel Authorization</string>
 </resources>
