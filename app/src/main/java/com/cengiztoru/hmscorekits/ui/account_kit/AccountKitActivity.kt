@@ -3,6 +3,7 @@ package com.cengiztoru.hmscorekits.ui.account_kit
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivityAccountKitBinding
@@ -173,6 +174,7 @@ class AccountKitActivity : AppCompatActivity() {
         val beforeText = mBinding.tvLogger.text
         mBinding.tvLogger.text =
             (if (beforeText.isNotBlank()) "$beforeText\n---------------------------------- \n\n" else "") + text
+        mBinding.svLogger.apply { post { fullScroll(View.FOCUS_DOWN) } }
     }
 
 //endregion
