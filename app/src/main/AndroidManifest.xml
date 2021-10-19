@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HMSCoreKits">
-
+        <activity
+            android:name=".ui.push_kit.PushKitActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.account_kit.AccountKitActivity"
             android:exported="false" />
