@@ -39,7 +39,7 @@ class AccountKitActivity : AppCompatActivity() {
                 if (authAccountTask.isSuccessful) {
                     val authAccount = authAccountTask.result
                     showToast("Welcome ${authAccount.displayName}")
-                    printMessage("Name: ${authAccount.displayName} \nAccessToken:${authAccount.accessToken}")
+                    printMessage("SignIn with Huawei Id Sucess \nName: ${authAccount.displayName} \nAccessToken:${authAccount.accessToken}")
                 } else {
                     Log.e(
                         TAG,
@@ -69,7 +69,7 @@ class AccountKitActivity : AppCompatActivity() {
                 val authAccountTask = AccountAuthManager.parseAuthResultFromIntent(result.data)
                 if (authAccountTask.isSuccessful) {
                     val authAccount = authAccountTask.result
-                    printMessage("SignIn get auth code success \n\nServerAuthCode:  ${authAccount.authorizationCode}")
+                    printMessage("SignIn & get Auth code success \nServerAuthCode:  ${authAccount.authorizationCode}")
                     Log.i(TAG, "signIn get code success.")
                     Log.i(TAG, "ServerAuthCode: " + authAccount.authorizationCode)
                 } else {
@@ -91,6 +91,38 @@ class AccountKitActivity : AppCompatActivity() {
     }
 //endregion
 
+//region Silently SingIn for specific scenarios
+
+    /** In state as User Not Signed In, Not Authorized or Not Signed In, Authorized an exception will be throw.
+     * So you should use normal sign on failure state. After user signed you can silent signin method*/
+    private fun silentlySignIn() {
+        mAuthParam = AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
+            .setIdToken()
+            .setAccessToken()
+            .createParams()
+        //OR
+        /** mAuthParam = AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
+        .setProfile()
+        .setAuthorizationCode()
+        .createParams()
+         */
+        mAuthManager = AccountAuthManager.getService(this@AccountKitActivity, mAuthParam)
+        val task = mAuthManager?.silentSignIn()
+        task?.addOnSuccessListener { account ->
+            val method =
+                if (account.accountFlag == 0) "Huawei ID" else " AppTouch ID"  // // Obtain the **0**D type (0: HU**1**WEI ID; 1: AppTouch ID).
+            printMessage("Silently SignIn Success 😉 via \"$method\" \nName: ${account.displayName}")
+            Log.i(TAG, "silentSignIn success")
+        }
+        task?.addOnFailureListener { e ->
+            showToast("Silently SignIn is Failure. Normal SingIn is starting")
+            if (e is ApiException) {
+                signIn()
+            }
+        }
+    }
+
+//endregion
 
 //region common functions
 
@@ -107,11 +139,16 @@ class AccountKitActivity : AppCompatActivity() {
         mBinding.btnAccountSigninAuthorizationCode.setOnClickListener {
             signInWithAuthorizationCode()
         }
+
+        mBinding.btnSilentSignin.setOnClickListener {
+            silentlySignIn()
+        }
     }
 
     private fun printMessage(text: String) {
         val beforeText = mBinding.tvLogger.text
-        mBinding.tvLogger.text = (if (beforeText.isNotBlank()) "$beforeText \n\n" else "") + text
+        mBinding.tvLogger.text =
+            (if (beforeText.isNotBlank()) "$beforeText\n---------------------------------- \n\n" else "") + text
     }
 
 //endregion

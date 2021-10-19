@@ -23,7 +23,7 @@
         android:text="@string/signin_authorization_code" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_account_silent_signin"
+        android:id="@+id/btn_silent_signin"
         style="@style/ButtonStyle"
         android:text="@string/silent_sign_in" />
 
