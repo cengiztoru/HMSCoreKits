@@ -38,7 +38,6 @@ class AccountKitActivity : AppCompatActivity() {
                 val authAccountTask = AccountAuthManager.parseAuthResultFromIntent(result.data)
                 if (authAccountTask.isSuccessful) {
                     val authAccount = authAccountTask.result
-                    showToast("Welcome ${authAccount.displayName}")
                     printMessage("SignIn with Huawei Id Sucess \nName: ${authAccount.displayName} \nAccessToken:${authAccount.accessToken}")
                 } else {
                     Log.e(
@@ -124,6 +123,27 @@ class AccountKitActivity : AppCompatActivity() {
 
 //endregion
 
+//region SingOut
+
+    private fun signOut() {
+        mAuthParam = AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
+            .setProfile()
+            .setAuthorizationCode()
+            .createParams()
+        mAuthManager = AccountAuthManager.getService(this@AccountKitActivity, mAuthParam)
+        val signOutTask = mAuthManager?.signOut()
+        signOutTask?.addOnSuccessListener {
+            showToast("SignOut Success")
+            printMessage("SignOut Success")
+        }?.addOnFailureListener {
+            showToast("SignOut Failed")
+            printMessage("SignOut Failed")
+        }
+    }
+
+//endregion
+
+
 //region common functions
 
     private fun inflateViews() {
@@ -142,6 +162,10 @@ class AccountKitActivity : AppCompatActivity() {
 
         mBinding.btnSilentSignin.setOnClickListener {
             silentlySignIn()
+        }
+
+        mBinding.btnAccountSignout.setOnClickListener {
+            signOut()
         }
     }
 
