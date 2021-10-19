@@ -8,27 +8,31 @@
     android:padding="16dp"
     tools:context=".ui.account_kit.AccountKitActivity">
 
-    <com.google.android.material.button.MaterialButton
+    <com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton
         android:id="@+id/btn_account_signin"
         style="@style/ButtonStyle"
-        android:text="@string/sign_in" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_account_signin_authorization_code"
         style="@style/ButtonStyle"
         android:text="@string/signin_authorization_code" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_account_silent_signin"
         style="@style/ButtonStyle"
         android:text="@string/silent_sign_in" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_account_signout"
         style="@style/ButtonStyle"
         android:text="@string/sign_out" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/cancel_authorization"
         style="@style/ButtonStyle"
         android:text="@string/cancel_authorization" />
@@ -41,9 +45,14 @@
         android:layout_marginBottom="8dp"
         android:background="?android:attr/listDivider" />
 
-    <TextView
-        android:id="@+id/tv_logger"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_logger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
