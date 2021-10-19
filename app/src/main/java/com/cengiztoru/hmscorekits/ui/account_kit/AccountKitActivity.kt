@@ -144,6 +144,25 @@ class AccountKitActivity : AppCompatActivity() {
 
 //endregion
 
+//region Revoke Authorization
+
+    private fun revokeAuthorization() {
+        mAuthParam = AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
+            .setProfile()
+            .setAuthorizationCode()
+            .createParams()
+        mAuthManager = AccountAuthManager.getService(this@AccountKitActivity, mAuthParam)
+        val task = mAuthManager?.cancelAuthorization()
+        task?.addOnSuccessListener {
+            showToast("Authorization Revoked")
+            printMessage("Authorization Revoked")
+        }?.addOnFailureListener {
+            showToast("Revoking Authorization Failed")
+            printMessage("Revoking Authorization Failed")
+        }
+    }
+
+//endregion
 
 //region common functions
 
@@ -167,6 +186,10 @@ class AccountKitActivity : AppCompatActivity() {
 
         mBinding.btnAccountSignout.setOnClickListener {
             signOut()
+        }
+
+        mBinding.btnRevokeAuthorization.setOnClickListener {
+            revokeAuthorization()
         }
     }
 

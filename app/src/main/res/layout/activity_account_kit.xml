@@ -33,9 +33,9 @@
         android:text="@string/sign_out" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/cancel_authorization"
+        android:id="@+id/btn_revoke_authorization"
         style="@style/ButtonStyle"
-        android:text="@string/cancel_authorization" />
+        android:text="@string/revoke_authorization" />
 
     <View
         android:id="@+id/divider"
