@@ -47,4 +47,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.huawei.hms:hwid:6.1.0.302'
+
+
+    //Analytics Kit
+    implementation 'com.huawei.hms:hianalytics:6.3.0.301'
+
+
 }
