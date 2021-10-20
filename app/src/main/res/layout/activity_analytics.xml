@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     android:padding="32dp"
     tools:context=".ui.analytics_kit.AnalyticsKitActivity">
@@ -19,8 +18,22 @@
         android:layout_height="32dp" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_allow_network_access"
+        style="@style/ButtonStyle"
+        android:text="Push User Profile Event" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="?android:attr/listDivider" />
+
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_push_event"
         style="@style/ButtonStyle"
-        android:text="Push Event" />
+        android:text="Push User Profile Event" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

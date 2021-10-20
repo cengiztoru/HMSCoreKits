@@ -30,6 +30,12 @@
             </intent-filter>
         </activity>
 
+        <!--    Dont send any network requests before obtaining users' authorization  -->
+        <meta-data
+            android:name="com.huawei.agconnect.AccessNetwork"
+            android:value="false" />
+
+
         <!--  FOR ANALYTICS KIT-->
         <meta-data
             android:name="install_channel"
