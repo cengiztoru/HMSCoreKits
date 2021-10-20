@@ -80,6 +80,17 @@
             style="@style/ButtonStyle"
             android:text="REGISTER" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/listDivider" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_custom_event"
+            style="@style/ButtonStyle"
+            android:text="ORDER DRINK (Custom Event)" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>

@@ -47,6 +47,7 @@ class AnalyticsKitActivity : AppCompatActivity() {
     }
 
     private fun sendAnalyticEvent(key: String, bundle: Bundle) {
+        Log.i(TAG, " Started to Sending Analytic Data KEY : $key data : $bundle")
         analyticsInstance.onEvent(key, bundle)
     }
 
@@ -134,6 +135,18 @@ class AnalyticsKitActivity : AppCompatActivity() {
         }
 
 //endregion
+
+        /** CUSTOM ANALYTIC EVENT */
+        mBinding.btnCustomEvent.setOnClickListener {
+            sendAnalyticEvent("drink",
+                Bundle().apply {
+                    putString("category", "coffee")
+                    putString("type", "Mocha")
+                    putString("size", "Grande")
+                    putString("size", "Grande")
+                }
+            )
+        }
 
     }
 
