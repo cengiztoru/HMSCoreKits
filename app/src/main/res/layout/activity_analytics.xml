@@ -8,4 +8,19 @@
     android:padding="32dp"
     tools:context=".ui.analytics_kit.AnalyticsKitActivity">
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_favorite_sport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Favorite Sport" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="32dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_push_event"
+        style="@style/ButtonStyle"
+        android:text="Push Event" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
