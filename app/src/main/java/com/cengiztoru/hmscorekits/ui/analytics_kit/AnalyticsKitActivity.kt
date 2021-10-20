@@ -37,6 +37,11 @@ class AnalyticsKitActivity : AppCompatActivity() {
         AccessNetworkManager.getInstance().setAccessNetwork(true)
     }
 
+    private fun clearCacheData() {
+        Log.i(TAG, " Started to Clearing Caching Data")
+        analyticsInstance.clearCachedData()
+    }
+
 //endregion
 
     //region common functions
@@ -61,6 +66,10 @@ class AnalyticsKitActivity : AppCompatActivity() {
 
         mBinding.btnAllowNetworkAccess.setOnClickListener {
             allowNetworkAccess()
+        }
+
+        mBinding.btnClearData.setOnClickListener {
+            clearCacheData()
         }
     }
 
