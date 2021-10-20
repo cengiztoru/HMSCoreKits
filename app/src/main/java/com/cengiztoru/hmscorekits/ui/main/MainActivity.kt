@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivityMainBinding
 import com.cengiztoru.hmscorekits.ui.account_kit.AccountKitActivity
+import com.cengiztoru.hmscorekits.ui.analytics_kit.AnalyticsKitActivity
 import com.cengiztoru.hmscorekits.utils.extensions.startActivity
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,10 @@ class MainActivity : AppCompatActivity() {
     private fun setListeners() {
         mBinding.btnAccountKit.setOnClickListener {
             startActivity<AccountKitActivity>()
+        }
+
+        mBinding.btnAnalyticsKit.setOnClickListener {
+            startActivity<AnalyticsKitActivity>()
         }
     }
 }
