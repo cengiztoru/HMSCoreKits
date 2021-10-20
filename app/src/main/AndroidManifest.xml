@@ -29,6 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--  FOR ANALYTICS KIT-->
+        <meta-data
+            android:name="install_channel"
+            android:value="AppGallery" />
+
     </application>
 
 </manifest>
