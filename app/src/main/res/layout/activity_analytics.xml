@@ -1,52 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="32dp"
     tools:context=".ui.analytics_kit.AnalyticsKitActivity">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/et_favorite_sport"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Your Favorite Sport" />
+        android:orientation="vertical"
+        android:padding="32dp">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="32dp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_favorite_sport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Your Favorite Sport" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_allow_network_access"
-        style="@style/ButtonStyle"
-        android:text="Push User Profile Event" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="?android:attr/listDivider" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_allow_network_access"
+            style="@style/ButtonStyle"
+            android:text="Push User Profile Event" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/listDivider" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_user_profile_event"
+            style="@style/ButtonStyle"
+            android:text="Push User Profile Event" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/listDivider" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_clear_data"
+            style="@style/ButtonStyle"
+            android:text="Clear Cache Data" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/listDivider" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_header_predefined_event_type"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PREDEFINED EVENT EXAMPLES" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit_score"
+            style="@style/ButtonStyle"
+            android:text="Submit Score (0)" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_to_cart"
+            style="@style/ButtonStyle"
+            android:text="ADD TO CART" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_register"
+            style="@style/ButtonStyle"
+            android:text="REGISTER" />
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_push_event"
-        style="@style/ButtonStyle"
-        android:text="Push User Profile Event" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="?android:attr/listDivider" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_clear_data"
-        style="@style/ButtonStyle"
-        android:text="Clear Cache Data" />
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
