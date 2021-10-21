@@ -20,6 +20,12 @@
         android:layout_height="wrap_content"
         android:text="REWARDED AD" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_interstitial_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INTERSTITIAL AD" />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 

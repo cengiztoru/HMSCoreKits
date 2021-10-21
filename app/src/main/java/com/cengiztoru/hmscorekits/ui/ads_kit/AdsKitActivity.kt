@@ -23,11 +23,18 @@ class AdsKitActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+
         mBinding.btnBannerAds.setOnClickListener {
             startActivity<BannerAdsActivity>()
         }
+
         mBinding.btnRewardedAd.setOnClickListener {
             startActivity<RewardedAdActivity>()
         }
+
+        mBinding.btnInterstitialAd.setOnClickListener {
+            startActivity<InterstitialAdActivity>()
+        }
+
     }
 }
