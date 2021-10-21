@@ -19,10 +19,10 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="32dp" />
+            android:layout_height="16dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_allow_network_access"
+            android:id="@+id/btn_user_profile_event"
             style="@style/ButtonStyle"
             android:text="Push User Profile Event" />
 
@@ -35,9 +35,9 @@
             android:background="?android:attr/listDivider" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_user_profile_event"
+            android:id="@+id/btn_allow_network_access"
             style="@style/ButtonStyle"
-            android:text="Push User Profile Event" />
+            android:text="ALLOW NETWORK ACCESS" />
 
         <View
             android:layout_width="match_parent"
@@ -90,7 +90,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_custom_event"
             style="@style/ButtonStyle"
-            android:text="ORDER DRINK (Custom Event)" />
+            android:text="ORDER A DRINK (Custom Event)" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>
