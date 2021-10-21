@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HMSCoreKits">
         <activity
+            android:name=".ui.ads_kit.AdsKitActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.analytics_kit.AnalyticsKitActivity"
             android:exported="false" />
         <activity
