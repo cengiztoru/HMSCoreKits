@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 /**
  * Created by Cengiz TORU on 18/10/2021.
@@ -20,4 +22,19 @@ fun Activity.showToast(@StringRes messageRes: Int, duration: Int = Toast.LENGTH_
 
 inline fun <reified T : Activity> Activity.startActivity(block: Intent.() -> Unit = {}) {
     startActivity(Intent(this, T::class.java).apply(block))
+}
+
+
+fun Activity.fullscreen() {
+    with(WindowInsetsControllerCompat(window, window.decorView)) {
+        systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_BARS_BY_SWIPE
+        hide(WindowInsetsCompat.Type.systemBars())
+    }
+}
+
+fun Activity.exitFullscreen() {
+    WindowInsetsControllerCompat(
+        window,
+        window.decorView
+    ).show(WindowInsetsCompat.Type.systemBars())
 }
