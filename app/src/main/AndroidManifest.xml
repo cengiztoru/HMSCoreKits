@@ -44,6 +44,7 @@
             android:name="install_channel"
             android:value="AppGallery" />
 
+        <activity android:name=".ui.ads_kit.BannerAdsActivity" />
     </application>
 
 </manifest>

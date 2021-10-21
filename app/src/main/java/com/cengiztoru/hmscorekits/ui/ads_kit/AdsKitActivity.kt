@@ -3,6 +3,7 @@ package com.cengiztoru.hmscorekits.ui.ads_kit
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivityAdsKitBinding
+import com.cengiztoru.hmscorekits.utils.extensions.startActivity
 
 class AdsKitActivity : AppCompatActivity() {
 
@@ -23,7 +24,7 @@ class AdsKitActivity : AppCompatActivity() {
 
     private fun setListeners() {
         mBinding.btnBannerAds.setOnClickListener {
-
+            startActivity<BannerAdsActivity>()
         }
     }
 }
