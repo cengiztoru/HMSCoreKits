@@ -36,5 +36,9 @@ class AdsKitActivity : AppCompatActivity() {
             startActivity<InterstitialAdActivity>()
         }
 
+        mBinding.btnSplashAd.setOnClickListener {
+            startActivity<SplashAdActivity>()
+        }
+
     }
 }

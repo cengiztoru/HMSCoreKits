@@ -26,6 +26,12 @@
         android:layout_height="wrap_content"
         android:text="INTERSTITIAL AD" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_splash_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SPLASH AD" />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 
