@@ -14,6 +14,12 @@
         android:layout_height="wrap_content"
         android:text="BANNER ADS" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_rewarded_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REWARDED AD" />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 

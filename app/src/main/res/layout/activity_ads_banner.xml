@@ -13,6 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         hwads:adId="testw6vs28auh3"
-        hwads:bannerSize="BANNER_SIZE_360_57" />
+        hwads:bannerSize="BANNER_SIZE_360_57" />  <!--todo add your ad id here    -->
 
 </FrameLayout>

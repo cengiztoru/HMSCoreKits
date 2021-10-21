@@ -34,7 +34,7 @@ class BannerAdsActivity : AppCompatActivity() {
 
 //      Adding A Banner View Programatically
         val topBannerView = BannerView(this)
-        topBannerView.adId = "testw6vs28auh3"
+        topBannerView.adId = "testw6vs28auh3"    //todo add your ad id here
         topBannerView.bannerAdSize = BannerAdSize.BANNER_SIZE_SMART
         topBannerView.loadAd(adParam)
         //topBannerView.setListener()

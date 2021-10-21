@@ -26,5 +26,8 @@ class AdsKitActivity : AppCompatActivity() {
         mBinding.btnBannerAds.setOnClickListener {
             startActivity<BannerAdsActivity>()
         }
+        mBinding.btnRewardedAd.setOnClickListener {
+            startActivity<RewardedAdActivity>()
+        }
     }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/hiad_16_dp"
+    tools:context=".ui.ads_kit.RewardedAdActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/hiad_16_dp"
+        android:text="This is rewarded ads sample."
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/hiad_16_dp"
+        android:text="Score : 100"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_show_rewarded_ad"
+        style="@style/ButtonStyle"
+        android:text="Watch Video" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

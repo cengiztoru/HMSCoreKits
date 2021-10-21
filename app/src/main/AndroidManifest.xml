@@ -45,6 +45,7 @@
             android:value="AppGallery" />
 
         <activity android:name=".ui.ads_kit.BannerAdsActivity" />
+        <activity android:name=".ui.ads_kit.RewardedAdActivity" />
     </application>
 
 </manifest>
