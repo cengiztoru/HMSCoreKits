@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/hiad_16_dp"
-        android:text="Score : 100"
+        android:text="Score : 0"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <com.google.android.material.button.MaterialButton
