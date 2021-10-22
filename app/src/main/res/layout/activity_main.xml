@@ -29,6 +29,12 @@
             android:layout_height="wrap_content"
             android:text="ADS KIT" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_location_kit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOCATION KIT" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>
