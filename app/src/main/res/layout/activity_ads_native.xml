@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ads_kit.NativeAdActivity">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/hiad_16_dp"
+        android:text="@string/display_form"
+        android:textSize="@dimen/hiad_text_16_sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/hiad_16_dp"
+        android:gravity="center"
+        android:textSize="@dimen/hiad_text_16_sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_display_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/hiad_16_dp"
+        app:layout_constraintStart_toStartOf="@id/tv_status"
+        app:layout_constraintTop_toBottomOf="@+id/tv_status">
+
+        <RadioButton
+            android:id="@+id/radio_button_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/large" />
+
+        <RadioButton
+            android:id="@+id/radio_button_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/small" />
+
+        <RadioButton
+            android:id="@+id/radio_button_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/video" />
+    </RadioGroup>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_load"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="@string/load_button_text"
+        app:layout_constraintBottom_toBottomOf="@id/radio_group_display_form"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/radio_group_display_form"
+        app:layout_constraintTop_toTopOf="@id/radio_group_display_form" />
+
+
+    <ScrollView
+        android:id="@+id/sv_ad_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/radio_group_display_form" />
+</androidx.constraintlayout.widget.ConstraintLayout>

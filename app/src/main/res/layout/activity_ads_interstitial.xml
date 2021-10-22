@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.ads_kit.InterstitialAdActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_image_ad"
+        style="@style/ButtonStyle"
+        android:text="LOAD IMAGE INTERSTITIAL AD" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hiad_32_dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_video_ad"
+        style="@style/ButtonStyle"
+        android:text="LOAD VIDEO INTERSTITIAL AD" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
