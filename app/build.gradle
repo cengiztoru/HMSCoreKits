@@ -52,8 +52,11 @@ dependencies {
     //Analytics Kit
     implementation 'com.huawei.hms:hianalytics:6.3.0.301'
 
-
+    //Ads Kit
     implementation 'com.huawei.hms:ads-identifier:3.4.39.302'
     implementation 'com.huawei.hms:ads-installreferrer:3.4.39.302'
     implementation 'com.huawei.hms:ads-lite:13.4.39.302'
+
+    //Location Kit
+    implementation 'com.huawei.hms:location:5.1.0.303'
 }
