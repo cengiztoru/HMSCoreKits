@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HMSCoreKits">
         <activity
+            android:name=".ui.ads_kit.NativeAdActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ads_kit.InterstitialAdActivity"
             android:exported="false" />
         <activity
