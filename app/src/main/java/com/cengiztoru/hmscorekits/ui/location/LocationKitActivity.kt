@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.cengiztoru.hmscorekits.databinding.ActivityLocationKitBinding
@@ -71,6 +72,7 @@ class LocationKitActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityLocationKitBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        setListeners()
 
         requestLocationPermission()
 
@@ -222,9 +224,20 @@ class LocationKitActivity : AppCompatActivity() {
 
 
     private fun printMessage(message: String) {
-        val beforeText = mBinding.tvLogger.text
-        mBinding.tvLogger.text = "$beforeText \n\n $message"
+        mBinding.tvLogger.append("\n\n$message")
+        mBinding.svLogger.apply { post { fullScroll(View.FOCUS_DOWN) } }
+    }
 
+    private fun setListeners() {
+        mBinding.btnReqLocationUpdates.setOnClickListener {
+            printMessage("\n\nLocation Update Starting\n\n")
+            checkLocationSettingsAndRequestUpdates()
+        }
+
+        mBinding.btnRemoveLocationUpdates.setOnClickListener {
+            printMessage("\n\nCancelled Location Update Request\n\n")
+            removeLocationUpdatesWithCallback()
+        }
     }
 
 
