@@ -8,25 +8,17 @@
     tools:context=".ui.location.LocationKitActivity">
 
 
-    <ScrollView
-        android:id="@+id/sv_logger"
+    <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
+        android:id="@+id/tv_logger"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@id/btn_req_location_updates"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_logger"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            tools:text="LOCATIONS" />
-
-    </ScrollView>
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="LOCATIONS" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_req_location_updates"

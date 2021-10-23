@@ -7,7 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.cengiztoru.hmscorekits.databinding.ActivityLocationKitBinding
@@ -225,7 +224,6 @@ class LocationKitActivity : AppCompatActivity() {
 
     private fun printMessage(message: String) {
         mBinding.tvLogger.append("\n\n$message")
-        mBinding.svLogger.apply { post { fullScroll(View.FOCUS_DOWN) } }
     }
 
     private fun setListeners() {
