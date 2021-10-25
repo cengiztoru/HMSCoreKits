@@ -6,6 +6,7 @@ import com.cengiztoru.hmscorekits.databinding.ActivityMainBinding
 import com.cengiztoru.hmscorekits.ui.account_kit.AccountKitActivity
 import com.cengiztoru.hmscorekits.ui.ads_kit.AdsKitActivity
 import com.cengiztoru.hmscorekits.ui.analytics_kit.AnalyticsKitActivity
+import com.cengiztoru.hmscorekits.ui.location.LocationKitActivity
 import com.cengiztoru.hmscorekits.utils.extensions.startActivity
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         mBinding.btnAdsKit.setOnClickListener {
             startActivity<AdsKitActivity>()
+        }
+
+        mBinding.btnLocationKit.setOnClickListener {
+            startActivity<LocationKitActivity>()
         }
     }
 }

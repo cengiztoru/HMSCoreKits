@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cengiztoru.hmscorekits">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <!--check network permissions-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--check wifi state-->
@@ -14,6 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HMSCoreKits">
+        <activity
+            android:name=".ui.location.LocationKitActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.ads_kit.NativeAdActivity"
             android:exported="false" />
@@ -40,15 +46,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!--    Dont send any network requests before obtaining users' authorization  -->
+        </activity> <!-- Dont send any network requests before obtaining users' authorization -->
         <meta-data
             android:name="com.huawei.agconnect.AccessNetwork"
-            android:value="false" />
-
-
-        <!--  FOR ANALYTICS KIT-->
+            android:value="false" /> <!-- FOR ANALYTICS KIT -->
         <meta-data
             android:name="install_channel"
             android:value="AppGallery" />
