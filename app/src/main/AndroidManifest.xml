@@ -14,9 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HMSCoreKits">
-        <activity
-            android:name=".ui.push_kit.PushKitActivity"
-            android:exported="false" />
+
         <activity
             android:name=".ui.account_kit.AccountKitActivity"
             android:exported="false" />
@@ -38,6 +36,22 @@
                 <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".ui.push_kit.ProductDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.push_kit.PushKitActivity"
+            android:exported="false">
+            <!-- ACTION NAME MUST SAME AS action key on deeplink. You can set it manually on your server when sending push notifications.-->
+            <!-- OR YOU CAN SET ACTION WHEN YOU USED TO APPGALLERY PUSH KIT DASHBOARD VALUES LIKE FOLLOWING -->
+            <!-- Action: Open App, AppPage: CustomActionPage, EnterAnAction: action name on defined on manifest -->
+            <intent-filter>
+                <action android:name="OPENDEEPLINK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="push_kit_auto_init_enabled"
