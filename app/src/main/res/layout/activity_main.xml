@@ -23,20 +23,17 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_analytics_kit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/ButtonStyle"
             android:text="ANALYTICS KIT" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_ads_kit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/ButtonStyle"
             android:text="ADS KIT" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_location_kit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/ButtonStyle"
             android:text="LOCATION KIT" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

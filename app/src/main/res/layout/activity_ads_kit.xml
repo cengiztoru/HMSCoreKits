@@ -10,32 +10,27 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_banner_ads"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:text="BANNER ADS" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_rewarded_ad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:text="REWARDED AD" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_interstitial_ad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:text="INTERSTITIAL AD" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_splash_ad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:text="SPLASH AD" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_native_ad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:text="NATIVE AD" />
 
 
