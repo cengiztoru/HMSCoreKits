@@ -8,6 +8,7 @@ import com.cengiztoru.hmscorekits.databinding.ActivityPushKitBinding
 import com.cengiztoru.hmscorekits.utils.extensions.startActivity
 import com.huawei.hms.aaid.HmsInstanceId
 import com.huawei.hms.common.ApiException
+import com.huawei.hms.push.HmsMessaging
 
 // Obtain the app ID from the agconnect-service.json file.
 private const val APP_ID = "104846955"
@@ -23,6 +24,7 @@ class PushKitActivity : AppCompatActivity() {
         setListeners()
         obtainPushToken()
         getIntentData(intent)
+        displayingPushOperations()
     }
 
 
@@ -112,11 +114,53 @@ class PushKitActivity : AppCompatActivity() {
                 }
             }
         } ?: run {
-            printMessage("INTENT NULL")
+            printMessage("INTENT NULL. NO ANY DEEPLINK")
         }
     }
 
 //endregion
+
+
+//region STATUS OF DISPLAYING NOTIFICATIONS
+
+    private fun displayingPushOperations() {
+        if (isMessagesDisplaying().not()) {
+            turnOnMessageDisplaying()
+        }
+    }
+
+    private fun isMessagesDisplaying(): Boolean {
+        val isDisplaying = HmsMessaging.getInstance(this).isAutoInitEnabled
+        printMessage("IS NOTIFICATION MESSAGES DISPLAYING $isDisplaying")
+        return isDisplaying
+    }
+
+    private fun turnOffMessageDisplaying() {
+        // Disable displaying notification messages.
+        HmsMessaging.getInstance(this).turnOffPush().addOnCompleteListener { task ->
+            // Obtain the result.
+            if (task.isSuccessful) {
+                printMessage("TurnOffPush successfully.")
+                isMessagesDisplaying()
+            } else {
+                printMessage("IurnOffPush failed.")
+            }
+        }
+    }
+
+    private fun turnOnMessageDisplaying() {
+        // Enable displaying notification messages.
+        HmsMessaging.getInstance(this).turnOnPush().addOnCompleteListener { task ->
+            // Obtain the result.
+            if (task.isSuccessful) {
+                printMessage("TurnOnPush successfully.")
+            } else {
+                printMessage("IurnOnPush failed.")
+            }
+        }
+    }
+
+//
 
 
 //region common functions
@@ -134,7 +178,7 @@ class PushKitActivity : AppCompatActivity() {
 
     private fun printMessage(message: String) {
         runOnUiThread {
-            mBinding.tvToken.text = message
+            mBinding.tvToken.append("\n\n$message")
         }
     }
 
