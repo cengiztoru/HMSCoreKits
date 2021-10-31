@@ -46,7 +46,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Dont send any network requests before obtaining users' authorization -->
+        </activity>
+        <!-- Dont send any network requests before obtaining users' authorization -->
         <meta-data
             android:name="com.huawei.agconnect.AccessNetwork"
             android:value="false" /> <!-- FOR ANALYTICS KIT -->
@@ -56,6 +57,41 @@
 
         <activity android:name=".ui.ads_kit.BannerAdsActivity" />
         <activity android:name=".ui.ads_kit.RewardedAdActivity" />
+
+        <!-- HUAWEI PUSH KIT -->
+        <service
+            android:name=".ui.push_kit.MyPushService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".ui.push_kit.ProductDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.push_kit.PushKitActivity"
+            android:exported="false">
+            <!-- ACTION NAME MUST SAME AS action key on deeplink. You can set it manually on your server when sending push notifications.-->
+            <!-- OR YOU CAN SET ACTION WHEN YOU USED TO APPGALLERY PUSH KIT DASHBOARD VALUES LIKE FOLLOWING -->
+            <!-- Action: Open App, AppPage: CustomActionPage, EnterAnAction: action name on defined on manifest -->
+            <intent-filter>
+                <action android:name="OPENDEEPLINK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="push_kit_auto_init_enabled"
+            android:value="true" />
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
 
 </manifest>

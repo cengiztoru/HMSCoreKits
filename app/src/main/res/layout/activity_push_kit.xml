@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp"
+    tools:context=".ui.push_kit.PushKitActivity">
+
+    <TextView
+        android:id="@+id/tv_token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textSize="16sp"
+        tools:context=".ui.push_kit.PushKitActivity" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="64dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_turn_off_notifications"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Turn Off Notification Receiving  " />
+
+</LinearLayout>
