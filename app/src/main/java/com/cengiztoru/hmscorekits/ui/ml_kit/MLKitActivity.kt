@@ -2,10 +2,12 @@ package com.cengiztoru.hmscorekits.ui.ml_kit
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.R
 import com.cengiztoru.hmscorekits.databinding.ActivityMlkitBinding
 import com.cengiztoru.hmscorekits.utils.extensions.Constants
+import com.cengiztoru.hmscorekits.utils.extensions.startActivity
 import com.huawei.hmf.tasks.Task
 import com.huawei.hms.mlsdk.MLAnalyzerFactory
 import com.huawei.hms.mlsdk.common.MLApplication
@@ -117,9 +119,13 @@ class MLKitActivity : AppCompatActivity() {
 //            localTextRecognition()
             cloudTextRecognition()
         }
+        mBinding.btnLiveRecognition.setOnClickListener {
+            startActivity<LiveTextRecognition>()
+        }
     }
 
     private fun printLog(log: String) {
         mBinding.tvLogger.append("\n\n$log")
+        Log.i(TAG, log)
     }
 }

@@ -36,6 +36,9 @@
             android:name=".ui.ml_kit.MLKitActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.ml_kit.LiveTextRecognition"
+            android:exported="false" />
+        <activity
             android:name=".ui.location.LocationKitActivity"
             android:exported="false" />
         <activity
