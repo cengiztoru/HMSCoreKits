@@ -67,4 +67,9 @@ dependencies {
 
     //Location Kit
     implementation 'com.huawei.hms:location:5.1.0.303'
+
+    // ML KIT
+    implementation 'com.huawei.hms:ml-computer-vision-ocr:2.0.5.301'
+    //Latin-based language model package.
+    implementation 'com.huawei.hms:ml-computer-vision-ocr-latin-model:2.0.5.301'
 }

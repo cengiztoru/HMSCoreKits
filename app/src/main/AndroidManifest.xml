@@ -101,6 +101,13 @@
         <meta-data
             android:name="push_kit_auto_init_enabled"
             android:value="true" />
+
+
+        <!-- ML KIT -->
+        <meta-data
+            android:name="com.huawei.hms:ml-computer-vision-ocr-latin-model"
+            android:value="ocr" />
+
     </application>
 
     <queries>
