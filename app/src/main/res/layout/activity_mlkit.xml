@@ -7,27 +7,9 @@
     android:padding="16dp"
     tools:context=".ui.ml_kit.MLKitActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/text_recognition" />
-
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_text_recognition"
+        android:id="@+id/btn_text_related"
         style="@style/ButtonStyle"
-        android:text="TEXT RECOGNITION" />
+        android:text="TEXT RELATED SERVICES" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_live_recognition"
-        style="@style/ButtonStyle"
-        android:text="LIVE RECOGNITION" />
-
-
-    <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
-        android:id="@+id/tv_logger"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:gravity="center" />
 </androidx.appcompat.widget.LinearLayoutCompat>

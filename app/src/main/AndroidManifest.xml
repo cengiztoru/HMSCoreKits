@@ -33,6 +33,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HMSCoreKits">
         <activity
+            android:name=".ui.ml_kit.TextRecognitionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ml_kit.MLKitActivity"
             android:exported="false" />
         <activity
