@@ -17,4 +17,9 @@
         style="@style/ButtonStyle"
         android:text="LANGUAGE / VOICE RELATED SERVICES" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_image_related"
+        style="@style/ButtonStyle"
+        android:text="IMAGE RELATED SERVICES" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

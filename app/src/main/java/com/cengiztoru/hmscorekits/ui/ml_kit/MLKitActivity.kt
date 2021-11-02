@@ -30,9 +30,15 @@ class MLKitActivity : AppCompatActivity() {
         mBinding.btnTextRelated.setOnClickListener {
             startActivity<TextRecognitionActivity>()
         }
+
         mBinding.btnLanguageVoiceRelated.setOnClickListener {
             startActivity<LanguageVoiceRecognitionActivity>()
         }
+
+        mBinding.btnImageRelated.setOnClickListener {
+            startActivity<ImageRelatedRecognition>()
+        }
+
 
     }
 

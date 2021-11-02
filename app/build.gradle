@@ -82,5 +82,7 @@ dependencies {
     //Text to Speech
     implementation 'com.huawei.hms:ml-computer-voice-tts:2.2.0.300'
 
+    //Human Body Segmantation
+    implementation 'com.huawei.hms:ml-computer-vision-image-segmentation-body-model:2.2.0.300'
 
 }
