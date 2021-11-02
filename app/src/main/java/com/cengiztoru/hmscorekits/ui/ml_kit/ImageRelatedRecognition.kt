@@ -6,13 +6,13 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.R
 import com.cengiztoru.hmscorekits.databinding.ActivityMlkitImageRelatedBinding
+import com.cengiztoru.hmscorekits.utils.extensions.getRandomItem
 import com.huawei.hmf.tasks.Task
 import com.huawei.hms.mlsdk.MLAnalyzerFactory
 import com.huawei.hms.mlsdk.common.MLFrame
 import com.huawei.hms.mlsdk.imgseg.MLImageSegmentation
 import com.huawei.hms.mlsdk.imgseg.MLImageSegmentationScene
 import com.huawei.hms.mlsdk.imgseg.MLImageSegmentationSetting
-import kotlin.random.Random
 
 
 class ImageRelatedRecognition : AppCompatActivity() {
@@ -68,18 +68,15 @@ class ImageRelatedRecognition : AppCompatActivity() {
 
     private fun setListeners() {
         mBinding.btnImageSegmentation.setOnClickListener {
-            val imageId = when (Random.nextInt(100) % 3) {
-                1 -> {
-                    R.drawable.image_segmentation_1
-                }
-                2 -> {
-                    R.drawable.image_segmentation_2
-                }
-                else -> {
+            val resourceId = getRandomItem(
+                listOf(
+                    R.drawable.image_segmentation_1,
+                    R.drawable.image_segmentation_2,
                     R.drawable.image_segmentation_3
-                }
-            }
-            imageSegmentation(imageId)
+                )
+            ) ?: R.drawable.image_segmentation_1
+
+            imageSegmentation(resourceId)
         }
     }
 
