@@ -6,9 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivityMlkitLanguageVoiceRecognitionBinding
 import com.huawei.hmf.tasks.Task
 import com.huawei.hms.mlsdk.common.MLException
+import com.huawei.hms.mlsdk.langdetect.MLLangDetectorFactory
+import com.huawei.hms.mlsdk.langdetect.local.MLLocalLangDetector
+import com.huawei.hms.mlsdk.langdetect.local.MLLocalLangDetectorSetting
 import com.huawei.hms.mlsdk.translate.MLTranslatorFactory
 import com.huawei.hms.mlsdk.translate.cloud.MLRemoteTranslateSetting
 import com.huawei.hms.mlsdk.translate.cloud.MLRemoteTranslator
+import java.util.*
+import kotlin.random.Random
 
 
 class LanguageVoiceRecognitionActivity : AppCompatActivity() {
@@ -57,7 +62,34 @@ class LanguageVoiceRecognitionActivity : AppCompatActivity() {
         }
     }
 
+
+    private fun detectLanguage(text: String) {
+        printLog("DETECTION STARTED FOR ''$text'' ")
+        val factory: MLLangDetectorFactory = MLLangDetectorFactory.getInstance()
+        val setting: MLLocalLangDetectorSetting = MLLocalLangDetectorSetting.Factory()
+            // Set the minimum confidence threshold for language detection.
+            .setTrustedThreshold(0.01f)
+            .create()
+        val mlLocalLangDetector: MLLocalLangDetector = factory.getLocalLangDetector(setting)
+        // Method 1: Return multiple language detection results, including the language codes and confidences. sourceText indicates the text (which is a string) to be detected, with up to 5000 characters.
+        val probabilityDetectTask = mlLocalLangDetector.probabilityDetect(text)
+        probabilityDetectTask.addOnSuccessListener {
+            // Called when language detection is successful.
+            var langsAndProbabilities = ""
+            it.forEach { detectedLang ->
+                langsAndProbabilities += "${detectedLang.langCode.uppercase()} : ${detectedLang.probability}\n"
+            }
+            printLog("$langsAndProbabilities")
+            mlLocalLangDetector.stop()
+        }.addOnFailureListener {
+            // Called when language detection fails.
+            printLog("DETECTING LANGUAGE FAILED : ${it.localizedMessage}")
+            mlLocalLangDetector.stop()
+        }
+    }
+
     private fun printLog(log: String) {
+        mBinding.tvLogger.append("$log\n\n")
         Log.d(TAG, log)
     }
 
@@ -72,6 +104,24 @@ class LanguageVoiceRecognitionActivity : AppCompatActivity() {
             }
             mBinding.tilMessage.error = null
             translateText("tr", "en", text)
+        }
+
+        mBinding.btnDetectLang.setOnClickListener {
+            val text = when (Random.nextInt(100) % 4) {
+                0 -> {
+                    "亡羊补牢，为时未晚"
+                }
+                1 -> {
+                    "Sabrın sonu selamettir."
+                }
+                2 -> {
+                    "LESS IS MORE"
+                }
+                else -> {
+                    "Голь на вы́думку хитра́"
+                }
+            }
+            detectLanguage(text)
         }
     }
 

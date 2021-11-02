@@ -120,6 +120,10 @@
             android:name="com.huawei.hms:ml-computer-vision-ocr-latin-model"
             android:value="ocr" />
 
+        <meta-data
+            android:name="com.huawei.hms:ml-computer-language-detection"
+            android:value="langdetect" />
+
     </application>
 
     <queries>

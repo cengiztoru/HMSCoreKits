@@ -35,6 +35,11 @@
         style="@style/ButtonStyle"
         android:text="TRANSLATE TO ENGLISH" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_detect_lang"
+        style="@style/ButtonStyle"
+        android:text="DETECT LANGUAGE" />
+
     <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
         android:id="@+id/tv_logger"
         android:layout_width="match_parent"
