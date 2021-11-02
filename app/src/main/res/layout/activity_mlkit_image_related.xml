@@ -7,7 +7,7 @@
     android:padding="16dp"
     tools:context=".ui.ml_kit.ImageRelatedRecognition">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/img_before_image_segmentation"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -15,7 +15,7 @@
         app:layout_constraintHeight_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.45"
+        app:layout_constraintWidth_percent="0.48"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -42,7 +42,7 @@
         tools:layout_editor_absoluteX="12dp"
         tools:layout_editor_absoluteY="1dp" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/img_after_image_segmentation"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_before_image_segmentation"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.45"
+        app:layout_constraintWidth_percent="0.48"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
 

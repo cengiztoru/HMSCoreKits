@@ -87,5 +87,7 @@ dependencies {
 
     // Document Skew Correction
     implementation 'com.huawei.hms:ml-computer-vision-documentskew:2.1.0.300'
+    //ZoomableImageView
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
 }
