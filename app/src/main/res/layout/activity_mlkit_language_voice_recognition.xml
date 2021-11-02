@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingTop="4dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="4dp"
+    tools:context=".ui.ml_kit.LanguageVoiceRecognitionActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_message"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type Something in Turkish" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_translated_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_translate_text"
+        style="@style/ButtonStyle"
+        android:text="TRANSLATE TO ENGLISH" />
+
+    <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
+        android:id="@+id/tv_logger"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:gravity="center" />
+</androidx.appcompat.widget.LinearLayoutCompat>

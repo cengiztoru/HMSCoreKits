@@ -12,4 +12,9 @@
         style="@style/ButtonStyle"
         android:text="TEXT RELATED SERVICES" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_language_voice_related"
+        style="@style/ButtonStyle"
+        android:text="LANGUAGE / VOICE RELATED SERVICES" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

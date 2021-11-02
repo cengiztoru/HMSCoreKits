@@ -23,7 +23,6 @@ class MLKitActivity : AppCompatActivity() {
         //Set Access token for using cloud based services
         MLApplication.getInstance().setAccessToken(Constants.API_KEY)
 
-
         setListeners()
     }
 
@@ -31,6 +30,10 @@ class MLKitActivity : AppCompatActivity() {
         mBinding.btnTextRelated.setOnClickListener {
             startActivity<TextRecognitionActivity>()
         }
+        mBinding.btnLanguageVoiceRelated.setOnClickListener {
+            startActivity<LanguageVoiceRecognitionActivity>()
+        }
+
     }
 
 

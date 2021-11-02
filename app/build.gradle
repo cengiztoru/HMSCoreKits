@@ -72,4 +72,8 @@ dependencies {
     implementation 'com.huawei.hms:ml-computer-vision-ocr:2.0.5.301'
     //Latin-based language model package.
     implementation 'com.huawei.hms:ml-computer-vision-ocr-latin-model:2.0.5.301'
+
+    //RealTime translation
+    implementation 'com.huawei.hms:ml-computer-translate:3.0.0.300'
+
 }
