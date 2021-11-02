@@ -85,4 +85,7 @@ dependencies {
     //Human Body Segmantation
     implementation 'com.huawei.hms:ml-computer-vision-image-segmentation-body-model:2.2.0.300'
 
+    // Document Skew Correction
+    implementation 'com.huawei.hms:ml-computer-vision-documentskew:2.1.0.300'
+
 }

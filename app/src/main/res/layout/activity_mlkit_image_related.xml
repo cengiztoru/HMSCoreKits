@@ -90,6 +90,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_before" />
 
+    <View
+        android:id="@+id/divider_horizontal_2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@id/img_after_image_segmentation"
+        app:layout_constraintStart_toStartOf="@id/img_before_image_segmentation"
+        app:layout_constraintTop_toBottomOf="@id/btn_image_segmentation"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_document_skew_correction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="16dp"
+        android:text="DOCUMENT SKEW CORRECTION (has random images)"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_horizontal_2" />
+
 
     <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
         android:id="@+id/tv_logger"
