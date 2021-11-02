@@ -35,10 +35,30 @@
         style="@style/ButtonStyle"
         android:text="TRANSLATE TO ENGLISH" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_detect_lang"
         style="@style/ButtonStyle"
         android:text="DETECT LANGUAGE" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_tts"
+        style="@style/ButtonStyle"
+        android:text="TEXT TO SPEECH" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
 
     <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
         android:id="@+id/tv_logger"
