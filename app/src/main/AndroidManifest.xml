@@ -36,6 +36,9 @@
             android:name=".ui.ml_kit.TextRecognitionActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.ml_kit.FaceBodyRelatedActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ml_kit.ImageRelatedRecognition"
             android:exported="false" />
         <activity

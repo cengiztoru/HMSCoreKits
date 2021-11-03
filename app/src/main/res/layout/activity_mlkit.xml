@@ -22,4 +22,9 @@
         style="@style/ButtonStyle"
         android:text="IMAGE RELATED SERVICES" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_face_body_related"
+        style="@style/ButtonStyle"
+        android:text="FACE/BODY RELATED SERVICES" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

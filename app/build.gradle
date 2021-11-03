@@ -90,4 +90,6 @@ dependencies {
     //ZoomableImageView
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
+    //Liveness Detection
+    implementation 'com.huawei.hms:ml-computer-vision-livenessdetection-plugin:2.2.0.300'
 }

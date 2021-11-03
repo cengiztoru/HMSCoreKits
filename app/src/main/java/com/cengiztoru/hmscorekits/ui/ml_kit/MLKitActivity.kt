@@ -39,6 +39,9 @@ class MLKitActivity : AppCompatActivity() {
             startActivity<ImageRelatedRecognition>()
         }
 
+        mBinding.btnFaceBodyRelated.setOnClickListener {
+            startActivity<FaceBodyRelatedActivity>()
+        }
 
     }
 
