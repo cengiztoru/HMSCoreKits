@@ -52,11 +52,84 @@ class ScanKitActivity : AppCompatActivity() {
             // Input an image for scanning and return the result.
             val obj = data.getParcelableExtra(ScanUtil.RESULT) as HmsScan?
             obj?.apply {
-                printLog("originalValue $originalValue\n")
-                printLog("showResult $showResult\n")
-                printLog("scanType $scanType\n")
-                printLog("scanTypeForm $scanTypeForm\n")
-                printLog("zoomValue $zoomValue\n")
+                parseScanningResult(this)
+            }
+        }
+    }
+
+    private fun parseScanningResult(result: HmsScan) {
+        when (result.scanTypeForm) {
+            HmsScan.SMS_FORM -> {
+                // Parse the data into structured SMS data.
+                val smsContent = result.smsContent
+                val content = smsContent.msgContent
+                val phoneNumber = smsContent.destPhoneNumber
+                printLog("smsContent : $content, phoneNumber $phoneNumber")
+            }
+
+            HmsScan.WIFI_CONNECT_INFO_FORM -> {
+                // Parse the data into structured Wi-Fi data.
+                val wifiConnectionInfo = result.wiFiConnectionInfo
+                val password = wifiConnectionInfo.password
+                val ssidNumber = wifiConnectionInfo.ssidNumber
+                val cipherMode = wifiConnectionInfo.cipherMode
+                printLog("WIFI_CONNECT_INFO_FORM. password: $password, ssidNumber: $ssidNumber, cipherMode: $cipherMode")
+            }
+
+            HmsScan.BOOK_MARK_FORM -> {
+                val bookMarkForm = result.bookMarkInfo
+            }
+
+            HmsScan.EVENT_INFO_FORM -> {
+                val eventInfo = result.eventInfo
+
+            }
+
+            HmsScan.CONTACT_DETAIL_FORM -> {
+                val contactDetailForm = result.contactDetail
+
+            }
+
+            HmsScan.DRIVER_INFO_FORM -> {
+                val driverInfo = result.driverInfo
+
+            }
+
+            HmsScan.EMAIL_CONTENT_FORM -> {
+                val emailContent = result.emailContent
+
+            }
+            HmsScan.LOCATION_COORDINATE_FORM -> {
+                val locationCoordinate = result.locationCoordinate
+
+            }
+
+            HmsScan.TEL_PHONE_NUMBER_FORM -> {
+                val telPhoneNumber = result.telPhoneNumber
+
+            }
+
+            HmsScan.VEHICLEINFO_FORM -> {
+                val telPhoneNumber = result.vehicleInfo
+
+            }
+
+//            HmsScan.ARTICLE_NUMBER_FORM -> {
+//
+//            }
+//
+//            HmsScan.PURE_TEXT_FORM -> {
+//
+//            }
+//
+//            HmsScan.ISBN_NUMBER_FORM -> {
+//
+//            }
+            else -> {
+                printLog("originalValue ${result.originalValue}")
+                printLog("scanType ${result.scanType}")
+                printLog("scanTypeForm ${result.scanTypeForm}")
+                printLog("zoomValue ${result.zoomValue}")
             }
         }
     }
