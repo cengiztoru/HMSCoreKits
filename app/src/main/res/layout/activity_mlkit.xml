@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.ml_kit.MLKitActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_text_related"
+        style="@style/ButtonStyle"
+        android:text="TEXT RELATED SERVICES" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_language_voice_related"
+        style="@style/ButtonStyle"
+        android:text="LANGUAGE / VOICE RELATED SERVICES" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_image_related"
+        style="@style/ButtonStyle"
+        android:text="IMAGE RELATED SERVICES" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_face_body_related"
+        style="@style/ButtonStyle"
+        android:text="FACE/BODY RELATED SERVICES" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

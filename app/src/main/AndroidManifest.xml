@@ -10,6 +10,21 @@
     <!--check wifi state-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+    <!--Camera permission-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--Internet permission-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--Write permission-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--Read permission-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--Record permission-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--Network status obtaining permission-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--Wi-Fi status obtaining permission-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +32,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HMSCoreKits">
+        <activity
+            android:name=".ui.ml_kit.TextRecognitionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ml_kit.FaceBodyRelatedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ml_kit.ImageRelatedRecognition"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ml_kit.LanguageVoiceRecognitionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ml_kit.MLKitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ml_kit.LiveTextRecognition"
+            android:exported="false" />
         <activity
             android:name=".ui.location.LocationKitActivity"
             android:exported="false" />
@@ -86,6 +119,17 @@
         <meta-data
             android:name="push_kit_auto_init_enabled"
             android:value="true" />
+
+
+        <!-- ML KIT -->
+        <meta-data
+            android:name="com.huawei.hms:ml-computer-vision-ocr-latin-model"
+            android:value="ocr" />
+
+        <meta-data
+            android:name="com.huawei.hms:ml-computer-language-detection"
+            android:value="langdetect" />
+
     </application>
 
     <queries>

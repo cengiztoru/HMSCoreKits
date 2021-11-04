@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingTop="4dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="4dp"
+    tools:context=".ui.ml_kit.TextRecognitionActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        app:srcCompat="@drawable/text_recognition" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_text_recognition"
+        style="@style/ButtonStyle"
+        android:text="TEXT RECOGNITION FROM IMAGE" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_document_recognition"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_document_recognition"
+        style="@style/ButtonStyle"
+        android:text="DOCUMENT RECOGNITION (has random docs)"
+        android:textAllCaps="false" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_live_recognition"
+        style="@style/ButtonStyle"
+        android:text="LIVE STREAM RECOGNITION" />
+
+    <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
+        android:id="@+id/tv_logger"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:gravity="center" />
+</androidx.appcompat.widget.LinearLayoutCompat>

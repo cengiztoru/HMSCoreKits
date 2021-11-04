@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.ml_kit.ImageRelatedRecognition">
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/img_before_image_segmentation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.48"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_before"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="BEFORE"
+        app:layout_constraintEnd_toStartOf="@id/divider_vertical"
+        app:layout_constraintStart_toStartOf="@+id/img_before_image_segmentation"
+        app:layout_constraintTop_toBottomOf="@id/divider_horizontal" />
+
+
+    <View
+        android:id="@+id/divider_vertical"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@id/tv_before"
+        app:layout_constraintEnd_toStartOf="@id/img_after_image_segmentation"
+        app:layout_constraintStart_toEndOf="@+id/img_before_image_segmentation"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/img_after_image_segmentation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/img_before_image_segmentation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_before_image_segmentation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.48"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="AFTER"
+        app:layout_constraintEnd_toEndOf="@id/img_after_image_segmentation"
+        app:layout_constraintStart_toEndOf="@+id/divider_vertical"
+        app:layout_constraintTop_toTopOf="@id/tv_before" />
+
+
+    <View
+        android:id="@+id/divider_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@id/img_after_image_segmentation"
+        app:layout_constraintStart_toStartOf="@id/img_before_image_segmentation"
+        app:layout_constraintTop_toBottomOf="@id/img_before_image_segmentation"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_image_segmentation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:padding="16dp"
+        android:text="IMAGE SEGMENTATION(has random images)"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_before" />
+
+    <View
+        android:id="@+id/divider_horizontal_2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@id/img_after_image_segmentation"
+        app:layout_constraintStart_toStartOf="@id/img_before_image_segmentation"
+        app:layout_constraintTop_toBottomOf="@id/btn_image_segmentation"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_document_skew_correction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="16dp"
+        android:text="DOCUMENT SKEW CORRECTION (has random images)"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_horizontal_2" />
+
+
+    <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
+        android:id="@+id/tv_logger"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_image_segmentation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

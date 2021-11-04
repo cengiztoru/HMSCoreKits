@@ -15,6 +15,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //ML Kit supports both the 32-bit and 64-bit architectures. Remove binary files of the 32-bit architecture
+        ndk.abiFilters 'arm64-v8a', 'x86_64'
+
     }
 
     buildTypes {
@@ -63,4 +67,29 @@ dependencies {
 
     //Location Kit
     implementation 'com.huawei.hms:location:5.1.0.303'
+
+    // ML KIT
+    implementation 'com.huawei.hms:ml-computer-vision-ocr:2.0.5.301'
+    //Latin-based language model package.
+    implementation 'com.huawei.hms:ml-computer-vision-ocr-latin-model:2.0.5.301'
+
+    //RealTime translation
+    implementation 'com.huawei.hms:ml-computer-translate:3.0.0.300'
+
+    // Language Detection.
+    implementation 'com.huawei.hms:ml-computer-language-detection:2.2.0.300'
+
+    //Text to Speech
+    implementation 'com.huawei.hms:ml-computer-voice-tts:2.2.0.300'
+
+    //Human Body Segmantation
+    implementation 'com.huawei.hms:ml-computer-vision-image-segmentation-body-model:2.2.0.300'
+
+    // Document Skew Correction
+    implementation 'com.huawei.hms:ml-computer-vision-documentskew:2.1.0.300'
+    //ZoomableImageView
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    //Liveness Detection
+    implementation 'com.huawei.hms:ml-computer-vision-livenessdetection-plugin:2.2.0.300'
 }

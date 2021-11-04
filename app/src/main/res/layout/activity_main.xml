@@ -36,6 +36,11 @@
             style="@style/ButtonStyle"
             android:text="LOCATION KIT" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_ml_kit"
+            style="@style/ButtonStyle"
+            android:text="MACHINE LEARNING KIT" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>
