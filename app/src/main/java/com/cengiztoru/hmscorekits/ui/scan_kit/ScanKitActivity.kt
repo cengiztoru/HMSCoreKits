@@ -3,6 +3,7 @@ package com.cengiztoru.hmscorekits.ui.scan_kit
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,10 @@ import com.cengiztoru.hmscorekits.databinding.ActivityScanKitBinding
 import com.cengiztoru.hmscorekits.utils.extensions.isAllPermissionsGranted
 import com.cengiztoru.hmscorekits.utils.extensions.showToast
 import com.huawei.hms.hmsscankit.ScanUtil
+import com.huawei.hms.hmsscankit.WriterException
+import com.huawei.hms.ml.scan.HmsBuildBitmapOption
 import com.huawei.hms.ml.scan.HmsScan
+import kotlin.random.Random
 
 class ScanKitActivity : AppCompatActivity() {
 
@@ -34,7 +38,7 @@ class ScanKitActivity : AppCompatActivity() {
         setListeners()
     }
 
-
+    //region BARCODE SCANNING
     private fun startDefaultScanView() {
         // QRCODE_SCAN_TYPE and DATAMATRIX_SCAN_TYPE are set for the barcode format, indicating that Scan Kit will support only QR code and Data Matrix.
 //        val options = HmsScanAnalyzerOptions.Creator()
@@ -133,6 +137,29 @@ class ScanKitActivity : AppCompatActivity() {
             }
         }
     }
+//endregion
+
+    //region BARCODE CREATING
+    private fun createQrCode(content: String) {
+        val type = HmsScan.QRCODE_SCAN_TYPE
+        val width = 400
+        val height = 400
+        val options = HmsBuildBitmapOption.Creator()
+            .setBitmapBackgroundColor(Color.WHITE)
+            .setBitmapColor(Color.GREEN)
+            .setBitmapMargin(Random.nextInt(1, 5))
+            .create()
+        try {
+            // If the HmsBuildBitmapOption object is not constructed, set options to null.
+            val qrBitmap = ScanUtil.buildBitmap(content, type, width, height, options)
+            mBinding.imgCreatedBarcode.setImageBitmap(qrBitmap)
+            printLog("BARCODE CREATED")
+        } catch (e: WriterException) {
+            printLog("BARCODE CREATION FAILED. Message ${e.localizedMessage}")
+        }
+    }
+
+//endregion
 
 //region HANDLING RUNTIME PERMISSIONS
 
@@ -167,6 +194,15 @@ class ScanKitActivity : AppCompatActivity() {
     private fun setListeners() {
         mBinding.btnDefaultView.setOnClickListener {
             startDefaultScanView()
+        }
+
+        mBinding.btnCreateQr.setOnClickListener {
+            if (mBinding.etContent.text.isNullOrBlank()) {
+                mBinding.tilContent.error = "Please fill QR Code Content"
+                return@setOnClickListener
+            }
+            mBinding.tilContent.error = null
+            createQrCode(mBinding.etContent.text.toString())
         }
     }
 
