@@ -92,4 +92,7 @@ dependencies {
 
     //Liveness Detection
     implementation 'com.huawei.hms:ml-computer-vision-livenessdetection-plugin:2.2.0.300'
+
+    //Scan Kit
+    implementation 'com.huawei.hms:scan:2.2.0.300'
 }

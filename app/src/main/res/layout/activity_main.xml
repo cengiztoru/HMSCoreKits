@@ -41,6 +41,11 @@
             style="@style/ButtonStyle"
             android:text="MACHINE LEARNING KIT" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_scan_kit"
+            style="@style/ButtonStyle"
+            android:text="SCAN KIT" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>
