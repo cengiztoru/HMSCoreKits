@@ -12,6 +12,11 @@
         style="@style/ButtonStyle"
         android:text="CHECK SYSTEM INTEGRITY" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_malicious_apps"
+        style="@style/ButtonStyle"
+        android:text="MALICIOUS APPS" />
+
     <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
         android:id="@+id/tv_logger"
         android:layout_width="match_parent"

@@ -7,6 +7,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivitySafetyDetectKitBinding
 import com.huawei.hms.common.ApiException
+import com.huawei.hms.support.api.entity.core.CommonCode
+import com.huawei.hms.support.api.entity.safetydetect.MaliciousAppsData
 import com.huawei.hms.support.api.safetydetect.SafetyDetect
 import com.huawei.hms.support.api.safetydetect.SafetyDetectStatusCodes
 import org.json.JSONException
@@ -106,10 +108,52 @@ class SafetyDetectKitActivity : AppCompatActivity() {
 
 //endregion
 
+//region MALICIOUS APP DETECTION
+
+    private fun getMaliciousApps() {
+        SafetyDetect.getClient(this)
+            .maliciousAppsList
+            .addOnSuccessListener { maliciousAppsListResp ->
+                val appsDataList: List<MaliciousAppsData> = maliciousAppsListResp.maliciousAppsList
+                if (maliciousAppsListResp.rtnCode == CommonCode.OK) {
+                    if (appsDataList.isEmpty()) {
+                        printLog("No known potentially malicious apps are installed.")
+                    } else {
+                        appsDataList.forEach { maliciousApp ->
+                            printLog(
+                                "Information about a malicious app\n  " +
+                                        "APK: ${maliciousApp.apkPackageName} " +
+                                        "SHA-256: ${maliciousApp.apkSha256}  " +
+                                        "Category: ${maliciousApp.apkCategory}"
+                            )
+                        }
+                    }
+                } else {
+                    printLog("Get malicious apps list failed! Message: " + maliciousAppsListResp.errorReason)
+                }
+            }
+            .addOnFailureListener { e -> // There was an error communicating with the service.
+                val errorMsg: String? = if (e is ApiException) {
+                    // An error with the HMS API contains some additional details.
+                    SafetyDetectStatusCodes.getStatusCodeString(e.statusCode) + ": " + e.message
+                    // You can use the apiException.getStatusCode() method to get the status code.
+                } else {
+                    // Unknown type of error has occurred.
+                    e.message
+                }
+                printLog("Get malicious apps list failed! Message: $errorMsg")
+            }
+    }
+//endregion
+
 
     private fun setListeners() {
         mBinding.btnSystemIntegrity.setOnClickListener {
             invokeSysIntegrity()
+        }
+
+        mBinding.btnMaliciousApps.setOnClickListener {
+            getMaliciousApps()
         }
     }
 
