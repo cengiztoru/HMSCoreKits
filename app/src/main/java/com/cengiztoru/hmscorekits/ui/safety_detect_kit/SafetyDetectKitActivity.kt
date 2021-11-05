@@ -6,6 +6,7 @@ import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivitySafetyDetectKitBinding
+import com.huawei.hmf.tasks.Task
 import com.huawei.hms.common.ApiException
 import com.huawei.hms.common.api.CommonStatusCodes
 import com.huawei.hms.support.api.entity.core.CommonCode
@@ -171,7 +172,7 @@ class SafetyDetectKitActivity : AppCompatActivity() {
                     printLog(threat.urlCheckResult.toString())
                 }
             }
-            safeDetectClient.shutdownUrlCheck()
+            shutdownTaskListener(safeDetectClient.shutdownUrlCheck(), "shutdownUrlCheck")
         }.addOnFailureListener {
             // An error occurred during communication with the service.
             if (it is ApiException) {
@@ -189,11 +190,66 @@ class SafetyDetectKitActivity : AppCompatActivity() {
                 // An unknown exception occurs.
                 printLog("Url Checking Failure. Error: " + it.message)
             }
-            safeDetectClient.shutdownUrlCheck()
+            shutdownTaskListener(safeDetectClient.shutdownUrlCheck(), "shutdownUrlCheck")
         }
     }
 
 //endregion
+
+//region FAKE USER DETECTION
+
+    private fun initFakeUserDetect() {
+        // Replace with your activity or context as a parameter.
+        safeDetectClient.initUserDetect().addOnSuccessListener {
+            // Indicates communication with the service was successful.
+            getUserDetectResponseToken()
+        }.addOnFailureListener {
+            // There was an error communicating with the service.
+            printLog("Fake User Detect initialization failed. Message: ${it.localizedMessage}")
+        }
+    }
+
+
+    private fun getUserDetectResponseToken() {
+        safeDetectClient.userDetection(APP_ID)
+            .addOnSuccessListener { userDetectResponse ->
+                // Indicates communication with the service was successful.
+                val responseToken = userDetectResponse.responseToken
+                if (responseToken.isNullOrBlank().not()) {
+                    printLog("FakeUserDetection Token obtained : $responseToken")
+                    // Send the response token to your app server, and call the cloud API of HMS Core on your server to obtain the fake user detection result.
+                    shutdownTaskListener(
+                        safeDetectClient.shutdownUserDetect(),
+                        "shutdownUserDetect"
+                    )
+                }
+            }
+            .addOnFailureListener {  // There was an error communicating with the service.
+                val errorMsg: String? = if (it is ApiException) {
+                    // An error with the HMS API contains some additional details.
+                    // You can use the apiException.getStatusCode() method to get the status code.
+                    (SafetyDetectStatusCodes.getStatusCodeString(it.statusCode) + ": "
+                            + it.message)
+                } else {
+                    // Unknown type of error has occurred.
+                    it.message
+                }
+                printLog("User detection fail. Error info: $errorMsg")
+                shutdownTaskListener(safeDetectClient.shutdownUserDetect(), "shutdownUserDetect")
+            }
+    }
+
+//endregion
+
+    private fun shutdownTaskListener(task: Task<Void>, taskTag: String) {
+        task.addOnSuccessListener {
+            // Indicates communication with the service was successful.
+            printLog("$taskTag task is sucess")
+        }.addOnFailureListener {
+            // There was an error communicating with the service.
+            printLog("$taskTag is failured. Exception message: ${it.message}")
+        }
+    }
 
     private fun checkAppId() {
         if (APP_ID.isBlank()) {
@@ -218,6 +274,10 @@ class SafetyDetectKitActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             urlChecking(url)
+        }
+
+        mBinding.btnFakeUserDetection.setOnClickListener {
+            initFakeUserDetect()
         }
     }
 

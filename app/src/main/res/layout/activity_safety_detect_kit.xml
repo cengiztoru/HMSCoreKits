@@ -43,6 +43,18 @@
         style="@style/ButtonStyle"
         android:text="URL CHECKING" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="?android:attr/listDivider" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_fake_user_detection"
+        style="@style/ButtonStyle"
+        android:text="FAKE USER DETECTION" />
+
     <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
         android:id="@+id/tv_logger"
         android:layout_width="match_parent"
