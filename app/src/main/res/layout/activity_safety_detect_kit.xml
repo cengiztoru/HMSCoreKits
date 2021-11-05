@@ -17,6 +17,32 @@
         style="@style/ButtonStyle"
         android:text="MALICIOUS APPS" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="?android:attr/listDivider" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_url"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="URL"
+            android:text="http://wap.paokw.cn" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_url_checking"
+        style="@style/ButtonStyle"
+        android:text="URL CHECKING" />
+
     <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
         android:id="@+id/tv_logger"
         android:layout_width="match_parent"

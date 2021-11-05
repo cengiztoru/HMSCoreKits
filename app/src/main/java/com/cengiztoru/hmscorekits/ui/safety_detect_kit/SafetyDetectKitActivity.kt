@@ -7,9 +7,12 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.databinding.ActivitySafetyDetectKitBinding
 import com.huawei.hms.common.ApiException
+import com.huawei.hms.common.api.CommonStatusCodes
 import com.huawei.hms.support.api.entity.core.CommonCode
 import com.huawei.hms.support.api.entity.safetydetect.MaliciousAppsData
+import com.huawei.hms.support.api.entity.safetydetect.UrlCheckThreat
 import com.huawei.hms.support.api.safetydetect.SafetyDetect
+import com.huawei.hms.support.api.safetydetect.SafetyDetectClient
 import com.huawei.hms.support.api.safetydetect.SafetyDetectStatusCodes
 import org.json.JSONException
 import org.json.JSONObject
@@ -27,21 +30,22 @@ class SafetyDetectKitActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivitySafetyDetectKitBinding
 
+    private lateinit var safeDetectClient: SafetyDetectClient
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivitySafetyDetectKitBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        safeDetectClient = SafetyDetect.getClient(this)
 
+        checkAppId()
         setListeners()
     }
 
 //region  SYSTEM INTEGRITY CHECK
 
     private fun invokeSysIntegrity() {
-        if (APP_ID.isNullOrBlank()) {
-            printLog("PLEASE ADD YOUR APP ID")
-            return
-        }
         val nonce = ByteArray(24)
         try {
             val random: SecureRandom = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -54,7 +58,7 @@ class SafetyDetectKitActivity : AppCompatActivity() {
             printLog("NoSuchAlgorithm. Message:${e.message}")
         }
 
-        SafetyDetect.getClient(this)
+        safeDetectClient
             .sysIntegrity(nonce, APP_ID)
             .addOnSuccessListener { response -> // Indicates communication with the service was successful.
                 // Use response.getResult() to get the result data.
@@ -111,7 +115,7 @@ class SafetyDetectKitActivity : AppCompatActivity() {
 //region MALICIOUS APP DETECTION
 
     private fun getMaliciousApps() {
-        SafetyDetect.getClient(this)
+        safeDetectClient
             .maliciousAppsList
             .addOnSuccessListener { maliciousAppsListResp ->
                 val appsDataList: List<MaliciousAppsData> = maliciousAppsListResp.maliciousAppsList
@@ -144,8 +148,59 @@ class SafetyDetectKitActivity : AppCompatActivity() {
                 printLog("Get malicious apps list failed! Message: $errorMsg")
             }
     }
+
 //endregion
 
+//region URL CHECKING
+
+    private fun urlChecking(url: String) {
+        safeDetectClient.initUrlCheck()
+        safeDetectClient.urlCheck(
+            url,
+            APP_ID,
+            // Specify url threat type
+            UrlCheckThreat.MALWARE,
+            UrlCheckThreat.PHISHING
+        ).addOnSuccessListener {
+            if (it.urlCheckResponse.isEmpty()) {
+                // No threat exists.
+                printLog("NO ANY THREAT DETECTED")
+            } else {
+                // Threats exist.
+                it.urlCheckResponse.forEach { threat ->
+                    printLog(threat.urlCheckResult.toString())
+                }
+            }
+            safeDetectClient.shutdownUrlCheck()
+        }.addOnFailureListener {
+            // An error occurred during communication with the service.
+            if (it is ApiException) {
+                // HMS Core (APK) error code and corresponding error description.
+                val apiException = it
+                printLog(
+                    "Url Checking Failure. Error: " + CommonStatusCodes.getStatusCodeString(
+                        apiException.statusCode
+                    )
+                )
+                // Note: If the status code is SafetyDetectStatusCode.CHECK_WITHOUT_INIT,
+                // you did not call the initUrlCheck() method or you have initiated a URL check request before the call is completed.
+                // If an internal error occurs during the initialization, you need to call the initUrlCheck() method again to initialize the API.
+            } else {
+                // An unknown exception occurs.
+                printLog("Url Checking Failure. Error: " + it.message)
+            }
+            safeDetectClient.shutdownUrlCheck()
+        }
+    }
+
+//endregion
+
+    private fun checkAppId() {
+        if (APP_ID.isBlank()) {
+            printLog("PLEASE ADD YOUR APP ID")
+            return
+        }
+    }
 
     private fun setListeners() {
         mBinding.btnSystemIntegrity.setOnClickListener {
@@ -154,6 +209,15 @@ class SafetyDetectKitActivity : AppCompatActivity() {
 
         mBinding.btnMaliciousApps.setOnClickListener {
             getMaliciousApps()
+        }
+
+        mBinding.btnUrlChecking.setOnClickListener {
+            val url = mBinding.etUrl.text.toString().lowercase()
+            if (url.isNullOrBlank()) {
+                mBinding.tilUrl.error = "Please enter an url"
+                return@setOnClickListener
+            }
+            urlChecking(url)
         }
     }
 
