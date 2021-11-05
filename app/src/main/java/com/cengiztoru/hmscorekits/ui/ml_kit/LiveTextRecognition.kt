@@ -113,7 +113,7 @@ class LiveTextRecognition : AppCompatActivity() {
                 localLiveStreamTextRecognition()
             } else {
                 printLog("onRequestPermissionsResult:  USER NOT APPROVED PERMISSIONS")
-                showToast("Please grant to permissions for we can using your location")
+                showToast("Please grant to permissions for using services")
             }
         }
 
