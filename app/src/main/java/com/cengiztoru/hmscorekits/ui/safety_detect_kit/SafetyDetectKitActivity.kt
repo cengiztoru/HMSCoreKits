@@ -241,6 +241,32 @@ class SafetyDetectKitActivity : AppCompatActivity() {
 
 //endregion
 
+//region
+
+    private fun getWifiDetectStatus() {
+        printLog("Start to wifi status detection!")
+        safeDetectClient.wifiDetectStatus.addOnSuccessListener { wifiDetectResponse ->
+            val wifiDetectStatus = wifiDetectResponse.wifiDetectStatus
+            printLog(
+                """-1: Failed to obtain the Wi-Fi status.
+                0: No Wi-Fi is connected.
+                1: The connected Wi-Fi is secure.
+                2: The connected Wi-Fi is insecure.
+                """.trimIndent()
+            )
+            printLog("wifiDetectStatus is: $wifiDetectStatus")
+        }.addOnFailureListener { e ->
+            var message = "Wifi Detection Failured."
+            if (e is ApiException) {
+                message += "Code: ${e.statusCode}. " +
+                        "CodeString: ${SafetyDetectStatusCodes.getStatusCodeString(e.statusCode)}"
+            }
+            message += " Message:${e.message}"
+        }
+    }
+
+//endregion
+
     private fun shutdownTaskListener(task: Task<Void>, taskTag: String) {
         task.addOnSuccessListener {
             // Indicates communication with the service was successful.
@@ -278,6 +304,10 @@ class SafetyDetectKitActivity : AppCompatActivity() {
 
         mBinding.btnFakeUserDetection.setOnClickListener {
             initFakeUserDetect()
+        }
+
+        mBinding.btnCheckWifiStatus.setOnClickListener {
+            getWifiDetectStatus()
         }
     }
 

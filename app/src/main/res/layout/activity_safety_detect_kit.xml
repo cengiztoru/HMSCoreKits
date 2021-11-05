@@ -55,6 +55,11 @@
         style="@style/ButtonStyle"
         android:text="FAKE USER DETECTION" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_check_wifi_status"
+        style="@style/ButtonStyle"
+        android:text="CHECK WIFI STATUS (JUST ON CHINA)" />
+
     <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
         android:id="@+id/tv_logger"
         android:layout_width="match_parent"
