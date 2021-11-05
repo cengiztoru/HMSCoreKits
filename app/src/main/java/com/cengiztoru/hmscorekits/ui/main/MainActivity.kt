@@ -9,6 +9,7 @@ import com.cengiztoru.hmscorekits.ui.analytics_kit.AnalyticsKitActivity
 import com.cengiztoru.hmscorekits.ui.location.LocationKitActivity
 import com.cengiztoru.hmscorekits.ui.ml_kit.MLKitActivity
 import com.cengiztoru.hmscorekits.ui.push_kit.PushKitActivity
+import com.cengiztoru.hmscorekits.ui.safety_detect_kit.SafetyDetectKitActivity
 import com.cengiztoru.hmscorekits.ui.scan_kit.ScanKitActivity
 import com.cengiztoru.hmscorekits.utils.extensions.startActivity
 
@@ -53,8 +54,14 @@ class MainActivity : AppCompatActivity() {
         mBinding.btnMlKit.setOnClickListener {
             startActivity<MLKitActivity>()
         }
+
         mBinding.btnScanKit.setOnClickListener {
             startActivity<ScanKitActivity>()
         }
+
+        mBinding.btnSafetyDetectKit.setOnClickListener {
+            startActivity<SafetyDetectKitActivity>()
+        }
+
     }
 }
