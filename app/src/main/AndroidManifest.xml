@@ -33,6 +33,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HMSCoreKits">
         <activity
+            android:name=".ui.safety_detect_kit.SafetyDetectKitActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.scan_kit.ScanKitActivity"
             android:exported="false" />
         <activity

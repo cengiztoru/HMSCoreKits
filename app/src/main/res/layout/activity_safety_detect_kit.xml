@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.safety_detect_kit.SafetyDetectKitActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_system_integrity"
+        style="@style/ButtonStyle"
+        android:text="CHECK SYSTEM INTEGRITY" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_malicious_apps"
+        style="@style/ButtonStyle"
+        android:text="MALICIOUS APPS" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="?android:attr/listDivider" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_url"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="URL"
+            android:text="http://wap.paokw.cn" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_url_checking"
+        style="@style/ButtonStyle"
+        android:text="URL CHECKING" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="?android:attr/listDivider" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_fake_user_detection"
+        style="@style/ButtonStyle"
+        android:text="FAKE USER DETECTION" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_check_wifi_status"
+        style="@style/ButtonStyle"
+        android:text="CHECK WIFI STATUS (JUST ON CHINA)" />
+
+    <com.cengiztoru.hmscorekits.ui.custom_view.LoggerTextView
+        android:id="@+id/tv_logger"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal" />
+</androidx.appcompat.widget.LinearLayoutCompat>

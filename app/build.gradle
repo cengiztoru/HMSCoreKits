@@ -95,4 +95,8 @@ dependencies {
 
     //Scan Kit
     implementation 'com.huawei.hms:scan:2.2.0.300'
+
+    //Safety Detect
+    implementation 'com.huawei.hms:safetydetect:5.0.5.302'
+
 }

@@ -46,6 +46,11 @@
             style="@style/ButtonStyle"
             android:text="SCAN KIT" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_safety_detect_kit"
+            style="@style/ButtonStyle"
+            android:text="SAFETY DETECT KIT" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>
