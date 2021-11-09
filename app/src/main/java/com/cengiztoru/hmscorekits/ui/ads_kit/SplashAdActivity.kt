@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cengiztoru.hmscorekits.R
 import com.cengiztoru.hmscorekits.databinding.ActivityAdsSplashBinding
-import com.cengiztoru.hmscorekits.utils.extensions.fullscreen
+import com.cengiztoru.hmscorekits.utils.extensions.hideStatusBar
 import com.cengiztoru.hmscorekits.utils.extensions.showToast
 import com.huawei.hms.ads.AdParam
 import com.huawei.hms.ads.AudioFocusType
@@ -36,7 +36,7 @@ class SplashAdActivity : AppCompatActivity() {
         mBinding = ActivityAdsSplashBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        fullscreen()
+        hideStatusBar()
 
         setAdListener()
         initSplashAd()
