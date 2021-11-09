@@ -7,7 +7,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.cengiztoru.hmscorekits.databinding.ActivityMlkitBinding
-import com.cengiztoru.hmscorekits.utils.extensions.Constants
+import com.cengiztoru.hmscorekits.utils.Constants
 import com.cengiztoru.hmscorekits.utils.extensions.isAllPermissionsGranted
 import com.cengiztoru.hmscorekits.utils.extensions.showToast
 import com.cengiztoru.hmscorekits.utils.extensions.startActivity

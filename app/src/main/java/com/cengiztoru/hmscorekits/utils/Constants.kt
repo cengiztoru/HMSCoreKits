@@ -1,4 +1,4 @@
-package com.cengiztoru.hmscorekits.utils.extensions
+package com.cengiztoru.hmscorekits.utils
 
 object Constants {
     const val API_KEY =

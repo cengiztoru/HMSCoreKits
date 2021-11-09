@@ -9,7 +9,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.util.forEach
 import androidx.core.util.size
 import com.cengiztoru.hmscorekits.databinding.ActivityMlkitLiveTextRecognitionBinding
-import com.cengiztoru.hmscorekits.utils.extensions.Constants
+import com.cengiztoru.hmscorekits.utils.Constants
 import com.cengiztoru.hmscorekits.utils.extensions.gone
 import com.cengiztoru.hmscorekits.utils.extensions.isAllPermissionsGranted
 import com.cengiztoru.hmscorekits.utils.extensions.showToast
