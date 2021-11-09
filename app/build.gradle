@@ -87,6 +87,7 @@ dependencies {
 
     // Document Skew Correction
     implementation 'com.huawei.hms:ml-computer-vision-documentskew:2.1.0.300'
+
     //ZoomableImageView
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
@@ -98,5 +99,8 @@ dependencies {
 
     //Safety Detect
     implementation 'com.huawei.hms:safetydetect:5.0.5.302'
+
+    //Map Kit
+    implementation 'com.huawei.hms:maps:6.0.1.304'
 
 }

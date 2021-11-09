@@ -36,6 +36,9 @@
             android:name=".ui.safety_detect_kit.SafetyDetectKitActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.map_kit.MapKitActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.scan_kit.ScanKitActivity"
             android:exported="false" />
         <activity
@@ -135,6 +138,10 @@
         <meta-data
             android:name="com.huawei.hms:ml-computer-language-detection"
             android:value="langdetect" />
+
+        <meta-data
+            android:name="com.huawei.hms.client.channel.androidMarket"
+            android:value="false" />
 
     </application>
 

@@ -51,6 +51,11 @@
             style="@style/ButtonStyle"
             android:text="SAFETY DETECT KIT" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_map_kit"
+            style="@style/ButtonStyle"
+            android:text="MAP KIT" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>
