@@ -6,44 +6,44 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.cengiztoru.hmscorekits.R
-import com.cengiztoru.hmscorekits.databinding.ActivityMapKitBinding
+import com.cengiztoru.hmscorekits.databinding.ActivityMapViewBinding
 import com.cengiztoru.hmscorekits.utils.Constants
 import com.cengiztoru.hmscorekits.utils.extensions.hideToolBarSetStatusBarTransparent
-import com.cengiztoru.hmscorekits.utils.extensions.isPermissionGranted
+import com.cengiztoru.hmscorekits.utils.extensions.isAllPermissionsGranted
 import com.cengiztoru.hmscorekits.utils.extensions.showToast
 import com.huawei.hms.maps.CameraUpdateFactory
 import com.huawei.hms.maps.HuaweiMap
 import com.huawei.hms.maps.MapsInitializer
-import com.huawei.hms.maps.SupportMapFragment
+import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.model.LatLng
 
-class MapKitActivity : AppCompatActivity() {
+class MapViewActivity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object {
-        private const val TAG = "MapKitActivity"
+        private const val TAG = "MapViewActivity"
         private const val PERMISSION_REQUEST_CODE = 9112021
+        private const val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
         private val neededPermissions = arrayOf(
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION
         )
     }
 
-    private lateinit var mBinding: ActivityMapKitBinding
+    private lateinit var mBinding: ActivityMapViewBinding
     private var mHuaweiMap: HuaweiMap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MapsInitializer.setApiKey(Constants.API_KEY)
 
-        initUi()
-        initMapByPermissionStatus()
+        permissionOperations()
+        initUi(savedInstanceState)
 
     }
 
 //region MAP KIT FUNCTIONS
 
-    private fun onMapReady(huaweiMap: HuaweiMap?) {
+    override fun onMapReady(huaweiMap: HuaweiMap?) {
         mHuaweiMap = huaweiMap
         mHuaweiMap?.isMyLocationEnabled = true
         mHuaweiMap?.moveCamera(
@@ -56,22 +56,54 @@ class MapKitActivity : AppCompatActivity() {
 
 //endregion
 
-//region RUNTIME PERMISSIONS
+//region LIFECYCLE FUNCTIONS
 
-    private fun initMapByPermissionStatus() {
-        val permissionGranted =
-            isPermissionGranted(neededPermissions.first()) || isPermissionGranted(neededPermissions.last())
-        if (permissionGranted) {
-            initMap()
-        } else {
-            ActivityCompat.requestPermissions(this, neededPermissions, PERMISSION_REQUEST_CODE)
-        }
+    override fun onStart() {
+        super.onStart()
+        mBinding.mapView.onStart()
     }
 
-    private fun initMap() {
-        val mSupportMapFragment =
-            (supportFragmentManager.findFragmentById(R.id.fragment_map) as SupportMapFragment?)
-        mSupportMapFragment?.getMapAsync(::onMapReady)
+    override fun onStop() {
+        super.onStop()
+        mBinding.mapView.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mBinding.mapView.onDestroy()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mBinding.mapView.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mBinding.mapView.onResume()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mBinding.mapView.onLowMemory()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mBinding.mapView.onSaveInstanceState(outState)
+    }
+
+//endregion
+
+//region RUNTIME PERMISSIONS
+
+    private fun permissionOperations() {
+        if (isAllPermissionsGranted(neededPermissions).not()) {
+            ActivityCompat.requestPermissions(
+                this, neededPermissions,
+                PERMISSION_REQUEST_CODE
+            )
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -85,20 +117,23 @@ class MapKitActivity : AppCompatActivity() {
             && grantResults.firstOrNull { it == PackageManager.PERMISSION_GRANTED } != null
         ) {
             printLog("onRequestPermissionsResult: PERMISSION GRANTED")
-            initMap()
         } else {
             printLog("onRequestPermissionsResult:  USER NOT APPROVED PERMISSIONS")
             showToast("Please grant to permissions for using services")
-            finish()
         }
     }
 
 //endregion
 
-    private fun initUi() {
+    private fun initUi(savedInstanceState: Bundle?) {
         hideToolBarSetStatusBarTransparent()
-        mBinding = ActivityMapKitBinding.inflate(layoutInflater)
+        mBinding = ActivityMapViewBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        mBinding.mapView.apply {
+            onCreate(savedInstanceState?.getBundle(MAPVIEW_BUNDLE_KEY))
+            getMapAsync(this@MapViewActivity)
+        }
     }
 
     private fun printLog(log: String) {
