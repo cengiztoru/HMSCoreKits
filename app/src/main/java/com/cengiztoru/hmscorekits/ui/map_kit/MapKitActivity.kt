@@ -44,7 +44,6 @@ class MapKitActivity : AppCompatActivity() {
 //region MAP KIT FUNCTIONS
 
     private fun onMapReady(huaweiMap: HuaweiMap?) {
-        setMenuListener()
         mHuaweiMap = huaweiMap
         mHuaweiMap?.isMyLocationEnabled = true
         mHuaweiMap?.uiSettings?.isMyLocationButtonEnabled = true
@@ -54,6 +53,8 @@ class MapKitActivity : AppCompatActivity() {
                 10f
             )
         )
+        setMenuListener()
+        setMapEventListeners()
     }
 
     private fun setMapType(type: Int) {
@@ -125,6 +126,57 @@ class MapKitActivity : AppCompatActivity() {
 
         // Move the map camera in non-animation mode.
         mHuaweiMap?.moveCamera(cameraUpdate)
+    }
+
+    private fun setMapEventListeners() {
+        if (mHuaweiMap == null) {
+            printLog("Map Clicked")
+            return
+        }
+        mHuaweiMap?.setOnMapClickListener {
+            printLog("Map Clicked. Latitude: ${it.latitude} Longitude: ${it.longitude}")
+        }
+
+        mHuaweiMap?.setOnMapLongClickListener {
+            printLog("Map LONG Clicked. Latitude: ${it.latitude} Longitude: ${it.longitude}")
+        }
+
+        //Camera Moving Listeners
+        mHuaweiMap?.setOnCameraMoveStartedListener {
+            val reason = when (it) {
+                1 -> "GESTURE"
+                2 -> "API_ANIMATION"
+                else -> "DEVELOPER_ANIMATION"
+            }
+            printLog("Camera movement started reason: $reason ")
+        }
+
+        mHuaweiMap?.setOnCameraMoveListener {
+            printLog("Camera movement started")
+        }
+
+        mHuaweiMap?.setOnCameraIdleListener {
+            printLog("Camera movement finished")
+        }
+
+        mHuaweiMap?.setOnMapLoadedCallback {
+            printLog("MapLoaded")
+        }
+
+        mHuaweiMap?.setOnMarkerClickListener { marker ->
+            printLog("${marker.title} marker clicked")
+            false
+        }
+
+        mHuaweiMap?.setOnInfoWindowClickListener { marker ->
+            printLog("Info Window Clicked ${marker.title}")
+        }
+
+        mHuaweiMap?.setOnMyLocationButtonClickListener {
+            printLog("My Location Button Clicked")
+            false
+        }
+
     }
 
 //endregion
