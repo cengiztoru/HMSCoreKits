@@ -103,4 +103,7 @@ dependencies {
     //Map Kit
     implementation 'com.huawei.hms:maps:6.0.1.304'
 
+    //Menu
+    implementation 'com.github.imangazalievm:circlemenu:3.0.0'
+
 }

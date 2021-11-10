@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="fab_menu_icons">
+        <item>@drawable/map_default</item>
+        <item>@drawable/map_terrain</item>
+    </array>
+
+    <array name="fab_menu_colors">
+        <item>#FFFFFF</item>
+        <item>#FFFFFF</item>
+    </array>
+
+</resources>

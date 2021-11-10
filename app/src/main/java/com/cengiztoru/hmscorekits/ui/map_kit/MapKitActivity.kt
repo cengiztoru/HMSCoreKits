@@ -44,14 +44,20 @@ class MapKitActivity : AppCompatActivity() {
 //region MAP KIT FUNCTIONS
 
     private fun onMapReady(huaweiMap: HuaweiMap?) {
+        setMenuListener()
         mHuaweiMap = huaweiMap
         mHuaweiMap?.isMyLocationEnabled = true
+        mHuaweiMap?.uiSettings?.isMyLocationButtonEnabled = true
         mHuaweiMap?.moveCamera(
             CameraUpdateFactory.newLatLngZoom(
                 LatLng(41.1126131, 29.0073562),
                 10f
             )
         )
+    }
+
+    private fun setMapType(type: Int) {
+        mHuaweiMap?.mapType = if (type < 0 || type > 4) HuaweiMap.MAP_TYPE_NORMAL else type
     }
 
 //endregion
@@ -99,6 +105,21 @@ class MapKitActivity : AppCompatActivity() {
         hideToolBarSetStatusBarTransparent()
         mBinding = ActivityMapKitBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+    }
+
+
+    private fun setMenuListener() {
+        mBinding.fabMenu.setOnItemClickListener { index ->
+            val mapType = when (index) {
+                1 -> {
+                    HuaweiMap.MAP_TYPE_TERRAIN
+                }
+                else -> {
+                    HuaweiMap.MAP_TYPE_NORMAL
+                }
+            }
+            setMapType(mapType)
+        }
     }
 
     private fun printLog(log: String) {
