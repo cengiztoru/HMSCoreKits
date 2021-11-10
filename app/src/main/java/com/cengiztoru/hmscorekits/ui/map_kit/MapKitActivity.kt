@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
+import android.view.animation.LinearInterpolator
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -16,6 +17,7 @@ import com.cengiztoru.hmscorekits.utils.extensions.isPermissionGranted
 import com.cengiztoru.hmscorekits.utils.extensions.showToast
 import com.huawei.hms.maps.*
 import com.huawei.hms.maps.model.*
+import com.huawei.hms.maps.model.animation.*
 
 class MapKitActivity : AppCompatActivity() {
 
@@ -57,10 +59,13 @@ class MapKitActivity : AppCompatActivity() {
             "AYASOFYA",
             "Snippet",
             iconId = R.drawable.map_marker_ayasofya,
-            isClusterable = true
-        )
-        addMarker(KIZ_KULESI, "KIZ KULESİ", "Snippet", isClusterable = true)
-        mHuaweiMap?.setMarkersClustering(true)
+            isClusterable = false
+        )?.setAndStartAnimation(ScaleAnimation(2f, 0f, 2f, 0f), 3, 1000L)
+
+        addMarker(KIZ_KULESI, "KIZ KULESİ", "Snippet", isClusterable = false)
+            ?.setAndStartAnimation(AlphaAnimation(0.2f, 1.0f), 3, 1000L)
+
+        mHuaweiMap?.setMarkersClustering(false)
     }
 
     private fun addMarker(
@@ -70,9 +75,9 @@ class MapKitActivity : AppCompatActivity() {
         @DrawableRes iconId: Int? = null,
         isDraggable: Boolean = false,
         isFlat: Boolean = false,
-        isClusterable: Boolean = false,
+        isClusterable: Boolean = false,                 //if you will animate marker you must set clusterable = false
         alpha: Float = 1.0F
-    ) {
+    ): Marker? {
         val options = MarkerOptions()
             .position(latlng)
             .title(title)
@@ -86,7 +91,46 @@ class MapKitActivity : AppCompatActivity() {
             options.icon(BitmapDescriptorFactory.fromResource(iconId))
         }
 
-        mHuaweiMap?.addMarker(options)
+        return mHuaweiMap?.addMarker(options)
+    }
+
+    private fun Marker.setAndStartAnimation(
+        animation: Animation,
+        repeatCount: Int = 1,
+        duration: Long = 500L,
+        onAnimStart: ((marker: Marker) -> Unit?)? = null,
+        onAnimEnd: ((marker: Marker) -> Unit?)? = null
+    ) {
+
+        if (isClusterable) {
+            printLog("ANIMATION CANNOT ADD WHEN CLUSTERABLE = true, PLEASE SET CLUSTERABLE = false")
+            showToast("ANIMATION CANNOT ADD WHEN CLUSTERABLE = true, PLEASE SET CLUSTERABLE = false")
+            return
+        }
+
+        animation.repeatCount = repeatCount
+        animation.duration = duration
+        animation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart() {
+                printLog("$title markers animation start")
+                onAnimStart?.invoke(this@setAndStartAnimation)
+            }
+
+            override fun onAnimationEnd() {
+                printLog("$title markers animation end")
+                onAnimEnd?.invoke(this@setAndStartAnimation)
+            }
+        })
+
+        val animationSet = AnimationSet(true)
+        animationSet.interpolator = LinearInterpolator()
+        animationSet.addAnimation(animation)
+
+        // Set the animation effect for a marker.
+        setAnimation(animationSet)
+
+        // Start the animation.
+        startAnimation()
     }
 
     private fun setMapType(type: Int) {
@@ -196,6 +240,7 @@ class MapKitActivity : AppCompatActivity() {
         }
 
         mHuaweiMap?.setOnMarkerClickListener { marker ->
+            marker?.setAndStartAnimation(RotateAnimation(0f, 360f), 3)
             printLog("${marker.title} marker clicked")
             false
         }
