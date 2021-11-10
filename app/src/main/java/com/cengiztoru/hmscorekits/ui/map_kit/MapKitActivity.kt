@@ -67,7 +67,7 @@ class MapKitActivity : AppCompatActivity() {
 
         mHuaweiMap?.setMarkersClustering(false)
     }
-
+//region MARKER OPERATIONS
     private fun addMarker(
         latlng: LatLng,
         title: String,
@@ -133,6 +133,16 @@ class MapKitActivity : AppCompatActivity() {
         startAnimation()
     }
 
+    private fun Marker.setInfoWindowDisplay(showInfoWindows: Boolean) {
+        val currentlyIsWindowShown = isInfoWindowShown
+        if (showInfoWindows && currentlyIsWindowShown.not()) {
+            showInfoWindow()
+        } else if (showInfoWindows.not() && currentlyIsWindowShown) {
+            hideInfoWindow()
+        }
+    }
+
+    //endregion
     private fun setMapType(type: Int) {
         mHuaweiMap?.mapType = if (type < 0 || type > 4) HuaweiMap.MAP_TYPE_NORMAL else type
     }
