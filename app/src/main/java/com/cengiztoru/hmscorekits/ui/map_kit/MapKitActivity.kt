@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.cengiztoru.hmscorekits.R
@@ -14,9 +15,7 @@ import com.cengiztoru.hmscorekits.utils.extensions.hideToolBarSetStatusBarTransp
 import com.cengiztoru.hmscorekits.utils.extensions.isPermissionGranted
 import com.cengiztoru.hmscorekits.utils.extensions.showToast
 import com.huawei.hms.maps.*
-import com.huawei.hms.maps.model.CameraPosition
-import com.huawei.hms.maps.model.LatLng
-import com.huawei.hms.maps.model.LatLngBounds
+import com.huawei.hms.maps.model.*
 
 class MapKitActivity : AppCompatActivity() {
 
@@ -27,6 +26,9 @@ class MapKitActivity : AppCompatActivity() {
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION
         )
+        private val AYASOFYA =
+            LatLng(41.008589, 28.9802397)                    //Hagia Sophia Mosque
+        private val KIZ_KULESI = LatLng(41.02112148893288, 29.00411105533101)   //Maiden's Tower
     }
 
     private lateinit var mBinding: ActivityMapKitBinding
@@ -47,14 +49,44 @@ class MapKitActivity : AppCompatActivity() {
         mHuaweiMap = huaweiMap
         mHuaweiMap?.isMyLocationEnabled = true
         mHuaweiMap?.uiSettings?.isMyLocationButtonEnabled = true
-        mHuaweiMap?.moveCamera(
-            CameraUpdateFactory.newLatLngZoom(
-                LatLng(41.1126131, 29.0073562),
-                10f
-            )
-        )
+        mHuaweiMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(AYASOFYA, 15f))
         setMenuListener()
         setMapEventListeners()
+        addMarker(
+            AYASOFYA,
+            "AYASOFYA",
+            "Snippet",
+            iconId = R.drawable.map_marker_ayasofya,
+            isClusterable = true
+        )
+        addMarker(KIZ_KULESI, "KIZ KULESİ", "Snippet", isClusterable = true)
+        mHuaweiMap?.setMarkersClustering(true)
+    }
+
+    private fun addMarker(
+        latlng: LatLng,
+        title: String,
+        snippet: String? = null,
+        @DrawableRes iconId: Int? = null,
+        isDraggable: Boolean = false,
+        isFlat: Boolean = false,
+        isClusterable: Boolean = false,
+        alpha: Float = 1.0F
+    ) {
+        val options = MarkerOptions()
+            .position(latlng)
+            .title(title)
+            .draggable(isDraggable)
+            .snippet(snippet)
+            .flat(isFlat)
+            .alpha(alpha)
+            .clusterable(isClusterable)
+
+        iconId?.let {
+            options.icon(BitmapDescriptorFactory.fromResource(iconId))
+        }
+
+        mHuaweiMap?.addMarker(options)
     }
 
     private fun setMapType(type: Int) {
@@ -167,6 +199,20 @@ class MapKitActivity : AppCompatActivity() {
             printLog("${marker.title} marker clicked")
             false
         }
+
+        mHuaweiMap?.setOnMarkerDragListener(object : HuaweiMap.OnMarkerDragListener {
+            override fun onMarkerDragStart(marker: Marker) {
+                printLog("onMarkerDragStart: ")
+            }
+
+            override fun onMarkerDrag(marker: Marker) {
+                printLog("onMarkerDrag: ")
+            }
+
+            override fun onMarkerDragEnd(marker: Marker) {
+                printLog("onMarkerDragEnd: ")
+            }
+        })
 
         mHuaweiMap?.setOnInfoWindowClickListener { marker ->
             printLog("Info Window Clicked ${marker.title}")
